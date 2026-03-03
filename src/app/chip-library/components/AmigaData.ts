@@ -1,0 +1,363 @@
+export interface ChipInfo {
+  id: string;
+  name: string;
+  partNumber: string;
+  package: string;
+  pinCount: number;
+  description: string;
+  function: string;
+}
+
+export interface AmigaModel {
+  id: string;
+  name: string;
+  shortName: string;
+  year: string;
+  chips: ChipInfo[];
+}
+
+export const AMIGA_MODELS: AmigaModel[] = [
+  {
+    id: "a1200",
+    name: "Amiga A1200",
+    shortName: "A1200",
+    year: "1992",
+    chips: [
+      { id: "budgie", name: "Budgie", partNumber: "391425-02", package: "PLCC84", pinCount: 84, description: "Video/Audio controller", function: "AGA chipset video controller" },
+      { id: "gayle", name: "Gayle", partNumber: "391424-01", package: "PLCC84", pinCount: 84, description: "IDE/PCMCIA controller", function: "I/O and storage controller" },
+      { id: "lisa", name: "Lisa", partNumber: "391227-01", package: "PLCC84", pinCount: 84, description: "AGA display controller", function: "Advanced graphics architecture" },
+      { id: "paula", name: "Paula", partNumber: "391077-01", package: "PLCC52", pinCount: 52, description: "Audio/Serial/Disk controller", function: "Sound and I/O" },
+      { id: "alice", name: "Alice", partNumber: "391010-01", package: "PLCC84", pinCount: 84, description: "AGA DMA controller", function: "Memory and DMA controller" },
+      { id: "cia_u7", name: "CIA U7", partNumber: "391078-02 U7", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter A", function: "Parallel, serial, timers" },
+      { id: "cia_u8", name: "CIA U8", partNumber: "391078-02 U8", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter B", function: "Disk, joystick, timers" },
+      { id: "cpu", name: "CPU", partNumber: "MC68EC020", package: "PLCC68", pinCount: 68, description: "Motorola 68EC020 CPU", function: "32-bit processor @ 14.3 MHz" },
+    ],
+  },
+  {
+    id: "a600",
+    name: "Amiga A600",
+    shortName: "A600",
+    year: "1992",
+    chips: [
+      { id: "gayle_a6", name: "Gayle", partNumber: "391424-01", package: "PLCC84", pinCount: 84, description: "IDE/PCMCIA controller", function: "I/O and storage controller" },
+      { id: "paula_a6", name: "Paula", partNumber: "391077-01", package: "PLCC52", pinCount: 52, description: "Audio/Serial/Disk controller", function: "Sound and I/O" },
+      { id: "agnus_a6", name: "Fat Agnus", partNumber: "391025-01", package: "PLCC84", pinCount: 84, description: "Chip RAM DMA controller", function: "1MB chip RAM DMA" },
+      { id: "denise_a6", name: "Denise", partNumber: "391054-01", package: "PLCC48", pinCount: 48, description: "Display controller", function: "ECS display chip" },
+      { id: "cia_u6", name: "CIA U6", partNumber: "391078-02 U6", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter A", function: "Parallel, serial, timers" },
+      { id: "cia_u7_a6", name: "CIA U7", partNumber: "391078-02 U7", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter B", function: "Disk, joystick, timers" },
+      { id: "cpu_a6", name: "CPU", partNumber: "MC68000", package: "DIP64", pinCount: 64, description: "Motorola 68000 CPU", function: "16/32-bit processor @ 7.16 MHz" },
+    ],
+  },
+  {
+    id: "a500",
+    name: "Amiga A500",
+    shortName: "A500",
+    year: "1987",
+    chips: [
+      { id: "agnus_a5", name: "Agnus", partNumber: "318069-10", package: "DIP84", pinCount: 84, description: "DMA controller", function: "512KB chip RAM DMA" },
+      { id: "denise_a5", name: "Denise", partNumber: "318018-06", package: "DIP48", pinCount: 48, description: "Display controller", function: "OCS display chip" },
+      { id: "paula_a5", name: "Paula", partNumber: "318004-04", package: "DIP48", pinCount: 48, description: "Audio/Serial/Disk", function: "Sound and I/O controller" },
+      { id: "cia_a_a5", name: "CIA-A", partNumber: "391078-01 U9", package: "DIP40", pinCount: 40, description: "Complex Interface Adapter A", function: "Parallel, serial, timers" },
+      { id: "cia_b_a5", name: "CIA-B", partNumber: "391078-01 U10", package: "DIP40", pinCount: 40, description: "Complex Interface Adapter B", function: "Disk, joystick, timers" },
+      { id: "cpu_a5", name: "CPU", partNumber: "MC68000", package: "DIP64", pinCount: 64, description: "Motorola 68000 CPU", function: "16/32-bit @ 7.16 MHz" },
+      { id: "gary_a5", name: "Gary", partNumber: "391008-01", package: "DIP48", pinCount: 48, description: "Address decode / bus control", function: "Bus arbitration chip" },
+    ],
+  },
+  {
+    id: "a2000",
+    name: "Amiga A2000",
+    shortName: "A2000",
+    year: "1987",
+    chips: [
+      { id: "agnus_a2", name: "Fat Agnus", partNumber: "318069-02", package: "DIP84", pinCount: 84, description: "ECS DMA controller", function: "1MB chip RAM DMA" },
+      { id: "denise_a2", name: "Denise", partNumber: "318018-06", package: "DIP48", pinCount: 48, description: "Display controller", function: "OCS display chip" },
+      { id: "paula_a2", name: "Paula", partNumber: "318004-04", package: "DIP48", pinCount: 48, description: "Audio/Serial/Disk", function: "Sound and I/O" },
+      { id: "cia_a_a2", name: "CIA-A", partNumber: "391078-01 U9", package: "DIP40", pinCount: 40, description: "Complex Interface Adapter A", function: "Parallel, serial, timers" },
+      { id: "cia_b_a2", name: "CIA-B", partNumber: "391078-01 U10", package: "DIP40", pinCount: 40, description: "Complex Interface Adapter B", function: "Disk, joystick, timers" },
+      { id: "cpu_a2", name: "CPU", partNumber: "MC68000", package: "DIP64", pinCount: 64, description: "Motorola 68000 CPU", function: "16/32-bit @ 7.16 MHz" },
+      { id: "buster_a2", name: "Buster", partNumber: "390544-01", package: "DIP48", pinCount: 48, description: "Zorro II bus controller", function: "Expansion bus arbiter" },
+    ],
+  },
+  {
+    id: "cd32",
+    name: "Amiga CD32",
+    shortName: "CD32",
+    year: "1993",
+    chips: [
+      { id: "akiko_cd", name: "Akiko", partNumber: "391563-01", package: "PLCC84", pinCount: 84, description: "CD32 custom chip", function: "CD-ROM + chunky-to-planar" },
+      { id: "alice_cd", name: "Alice", partNumber: "391010-01", package: "PLCC84", pinCount: 84, description: "AGA DMA controller", function: "Memory and DMA" },
+      { id: "lisa_cd", name: "Lisa", partNumber: "391227-01", package: "PLCC84", pinCount: 84, description: "AGA display controller", function: "Advanced graphics" },
+      { id: "paula_cd", name: "Paula", partNumber: "391077-01", package: "PLCC52", pinCount: 52, description: "Audio/Serial/Disk", function: "Sound and I/O" },
+      { id: "cia_cd", name: "CIA", partNumber: "391078-02", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter", function: "I/O and timers" },
+      { id: "cpu_cd", name: "CPU", partNumber: "MC68EC020", package: "PLCC68", pinCount: 68, description: "Motorola 68EC020", function: "32-bit @ 14.3 MHz" },
+    ],
+  },
+  {
+    id: "a3000",
+    name: "Amiga A3000",
+    shortName: "A3000",
+    year: "1990",
+    chips: [
+      { id: "super_agnus_a3", name: "Super Agnus", partNumber: "391025-01", package: "PLCC84", pinCount: 84, description: "ECS DMA controller", function: "2MB chip RAM DMA" },
+      { id: "super_denise_a3", name: "Super Denise", partNumber: "391054-01", package: "PLCC48", pinCount: 48, description: "ECS display controller", function: "Productivity modes" },
+      { id: "paula_a3", name: "Paula", partNumber: "391077-01", package: "PLCC52", pinCount: 52, description: "Audio/Serial/Disk", function: "Sound and I/O" },
+      { id: "ramsey_a3", name: "Ramsey", partNumber: "390544-04", package: "PLCC84", pinCount: 84, description: "RAM controller", function: "DRAM/ZIPP memory arbiter" },
+      { id: "buster_a3", name: "Buster", partNumber: "390544-01", package: "PLCC84", pinCount: 84, description: "Zorro III bus controller", function: "Expansion bus arbiter" },
+      { id: "cia_a3", name: "CIA", partNumber: "391078-02", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter", function: "I/O and timers" },
+      { id: "cpu_a3", name: "CPU", partNumber: "MC68030", package: "PGA128", pinCount: 128, description: "Motorola 68030", function: "32-bit @ 25/40 MHz" },
+    ],
+  },
+  {
+    id: "a4000",
+    name: "Amiga A4000",
+    shortName: "A4000",
+    year: "1992",
+    chips: [
+      { id: "alice_a4", name: "Alice", partNumber: "391010-01", package: "PLCC84", pinCount: 84, description: "AGA DMA controller", function: "Memory and DMA" },
+      { id: "lisa_a4", name: "Lisa", partNumber: "391227-01", package: "PLCC84", pinCount: 84, description: "AGA display controller", function: "Advanced graphics" },
+      { id: "paula_a4", name: "Paula", partNumber: "391077-01", package: "PLCC52", pinCount: 52, description: "Audio/Serial/Disk", function: "Sound and I/O" },
+      { id: "ramsey_a4", name: "Ramsey", partNumber: "390544-04", package: "PLCC84", pinCount: 84, description: "RAM controller", function: "DRAM memory arbiter" },
+      { id: "gayle_a4", name: "Gayle", partNumber: "391424-01", package: "PLCC84", pinCount: 84, description: "IDE/PCMCIA controller", function: "I/O and storage" },
+      { id: "cia_a4", name: "CIA", partNumber: "391078-02", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter", function: "I/O and timers" },
+      { id: "cpu_a4", name: "CPU", partNumber: "MC68040", package: "PGA179", pinCount: 179, description: "Motorola 68040", function: "32-bit @ 25/40 MHz" },
+    ],
+  },
+  {
+    id: "cdtv",
+    name: "Amiga CDTV",
+    shortName: "CDTV",
+    year: "1991",
+    chips: [
+      { id: "fat_agnus_cdtv", name: "Fat Agnus", partNumber: "391025-01", package: "PLCC84", pinCount: 84, description: "ECS DMA controller", function: "1MB chip RAM DMA" },
+      { id: "super_denise_cdtv", name: "Super Denise", partNumber: "391054-01", package: "PLCC48", pinCount: 48, description: "ECS display controller", function: "Productivity display" },
+      { id: "paula_cdtv", name: "Paula", partNumber: "391077-01", package: "PLCC52", pinCount: 52, description: "Audio/Serial/Disk", function: "Sound and I/O" },
+      { id: "dmac_cdtv", name: "DMAC", partNumber: "390537-04", package: "PLCC84", pinCount: 84, description: "DMA controller", function: "SCSI + CD-ROM DMA" },
+      { id: "cia_cdtv", name: "CIA", partNumber: "391078-02", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter", function: "I/O and timers" },
+      { id: "cpu_cdtv", name: "CPU", partNumber: "MC68000", package: "DIP64", pinCount: 64, description: "Motorola 68000 CPU", function: "16/32-bit @ 7.16 MHz" },
+    ],
+  },
+];
+
+// Pin data for common packages
+export interface PinData {
+  number: number;
+  name: string;
+  signal: string;
+  direction: "IN" | "OUT" | "BI" | "PWR" | "GND";
+  description: string;
+}
+
+export function getPinsForChip(chipId: string): PinData[] {
+  // CIA PLCC44 pins
+  if (chipId.startsWith("cia")) {
+    return [
+      { number: 1, name: "VSS", signal: "GND", direction: "GND", description: "Ground" },
+      { number: 2, name: "PA0", signal: "PA0", direction: "BI", description: "Port A bit 0" },
+      { number: 3, name: "PA1", signal: "PA1", direction: "BI", description: "Port A bit 1" },
+      { number: 4, name: "PA2", signal: "PA2", direction: "BI", description: "Port A bit 2" },
+      { number: 5, name: "PA3", signal: "PA3", direction: "BI", description: "Port A bit 3" },
+      { number: 6, name: "PA4", signal: "PA4", direction: "BI", description: "Port A bit 4" },
+      { number: 7, name: "PA5", signal: "PA5", direction: "BI", description: "Port A bit 5" },
+      { number: 8, name: "PA6", signal: "PA6", direction: "BI", description: "Port A bit 6" },
+      { number: 9, name: "PA7", signal: "PA7", direction: "BI", description: "Port A bit 7" },
+      { number: 10, name: "PB0", signal: "PB0", direction: "BI", description: "Port B bit 0" },
+      { number: 11, name: "PB1", signal: "PB1", direction: "BI", description: "Port B bit 1" },
+      { number: 12, name: "PB2", signal: "PB2", direction: "BI", description: "Port B bit 2" },
+      { number: 13, name: "PB3", signal: "PB3", direction: "BI", description: "Port B bit 3" },
+      { number: 14, name: "PB4", signal: "PB4", direction: "BI", description: "Port B bit 4" },
+      { number: 15, name: "PB5", signal: "PB5", direction: "BI", description: "Port B bit 5" },
+      { number: 16, name: "PB6", signal: "PB6", direction: "BI", description: "Port B bit 6" },
+      { number: 17, name: "PB7", signal: "PB7", direction: "BI", description: "Port B bit 7" },
+      { number: 18, name: "VCC", signal: "VCC", direction: "PWR", description: "+5V power supply" },
+      { number: 19, name: "D0", signal: "D0", direction: "BI", description: "Data bus bit 0" },
+      { number: 20, name: "D1", signal: "D1", direction: "BI", description: "Data bus bit 1" },
+      { number: 21, name: "D2", signal: "D2", direction: "BI", description: "Data bus bit 2" },
+      { number: 22, name: "D3", signal: "D3", direction: "BI", description: "Data bus bit 3" },
+      { number: 23, name: "D4", signal: "D4", direction: "BI", description: "Data bus bit 4" },
+      { number: 24, name: "D5", signal: "D5", direction: "BI", description: "Data bus bit 5" },
+      { number: 25, name: "D6", signal: "D6", direction: "BI", description: "Data bus bit 6" },
+      { number: 26, name: "D7", signal: "D7", direction: "BI", description: "Data bus bit 7" },
+      { number: 27, name: "/CS", signal: "/CS", direction: "IN", description: "Chip select (active low)" },
+      { number: 28, name: "/RES", signal: "/RESET", direction: "IN", description: "Reset (active low)" },
+      { number: 29, name: "R/W", signal: "R/W", direction: "IN", description: "Read/Write select" },
+      { number: 30, name: "PHI2", signal: "PHI2", direction: "IN", description: "Clock input" },
+      { number: 31, name: "/IRQ", signal: "/IRQ", direction: "OUT", description: "Interrupt request (active low)" },
+      { number: 32, name: "RS0", signal: "RS0", direction: "IN", description: "Register select 0" },
+      { number: 33, name: "RS1", signal: "RS1", direction: "IN", description: "Register select 1" },
+      { number: 34, name: "RS2", signal: "RS2", direction: "IN", description: "Register select 2" },
+      { number: 35, name: "RS3", signal: "RS3", direction: "IN", description: "Register select 3" },
+      { number: 36, name: "CNT", signal: "CNT", direction: "BI", description: "Counter I/O" },
+      { number: 37, name: "SP", signal: "SP", direction: "BI", description: "Serial port" },
+      { number: 38, name: "TOD", signal: "TOD", direction: "IN", description: "Time-of-day clock" },
+      { number: 39, name: "/FLAG", signal: "/FLAG", direction: "IN", description: "Flag input (active low)" },
+      { number: 40, name: "PC", signal: "PC", direction: "OUT", description: "Peripheral control" },
+      { number: 41, name: "A1", signal: "A1", direction: "IN", description: "Address bit 1" },
+      { number: 42, name: "A0", signal: "A0", direction: "IN", description: "Address bit 0" },
+      { number: 43, name: "VSS", signal: "GND", direction: "GND", description: "Ground" },
+      { number: 44, name: "VCC", signal: "VCC", direction: "PWR", description: "+5V power supply" },
+    ];
+  }
+
+  // Lisa / Alice PLCC84 pins (generic AGA chip)
+  if (chipId === "lisa" || chipId === "alice" || chipId.startsWith("alice") || chipId.startsWith("lisa")) {
+    return generatePLCC84Pins();
+  }
+
+  // Paula PLCC52
+  if (chipId.startsWith("paula")) {
+    return generatePaulaPins();
+  }
+
+  // CPU PLCC68
+  if (chipId.startsWith("cpu")) {
+    return generateCPUPins();
+  }
+
+  // Gayle PLCC84
+  if (chipId.startsWith("gayle") || chipId.startsWith("agnus") || chipId.startsWith("budgie") || chipId.startsWith("ramsey") || chipId.startsWith("buster") || chipId.startsWith("akiko") || chipId.startsWith("dmac") || chipId.startsWith("fat") || chipId.startsWith("super")) {
+    return generatePLCC84Pins();
+  }
+
+  // Denise PLCC48
+  if (chipId.startsWith("denise")) {
+    return generatePLCC48Pins();
+  }
+
+  return generatePLCC44Pins();
+}
+
+function generatePLCC84Pins(): PinData[] {
+  const pinNames = [
+    "VCC","GND","A0","A1","A2","A3","A4","A5","A6","A7",
+    "A8","A9","A10","A11","A12","A13","A14","A15","A16","A17",
+    "A18","A19","A20","D0","D1","D2","D3","D4","D5","D6",
+    "D7","D8","D9","D10","D11","D12","D13","D14","D15","D16",
+    "D17","D18","D19","D20","D21","D22","D23","D24","D25","D26",
+    "D27","D28","D29","D30","D31","/RAS0","/RAS1","/CAS0","/CAS1",
+    "/WE","CCKQ","CCK","C3","C1","/OVR","XCLK","XCLKEN",
+    "/RESET","/INT2","/INT3","/INT6","DMAL","DKRD","DKWD","DKWE",
+    "/DKBR","RXD","TXD","/RTS","/CTS","VCC","GND","NC",
+  ];
+  const dirs: Array<"IN" | "OUT" | "BI" | "PWR" | "GND"> = ["PWR","GND","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","OUT","OUT","OUT","OUT","OUT","IN","IN","IN","IN","OUT","IN","IN","IN","OUT","OUT","OUT","OUT","OUT","OUT","OUT","OUT","OUT","IN","OUT","BI","BI","BI","BI","PWR","GND","BI"];
+  return Array.from({ length: 84 }, (_, i) => ({
+    number: i + 1,
+    name: pinNames[i] || `P${i + 1}`,
+    signal: pinNames[i] || `SIG${i + 1}`,
+    direction: dirs[i] || "BI",
+    description: getPinDescription(pinNames[i] || `P${i+1}`),
+  }));
+}
+
+function generatePLCC44Pins(): PinData[] {
+  return Array.from({ length: 44 }, (_, i) => ({
+    number: i + 1,
+    name: `P${i + 1}`,
+    signal: `SIG${i + 1}`,
+    direction: "BI" as const,
+    description: `Pin ${i + 1}`,
+  }));
+}
+
+function generatePLCC48Pins(): PinData[] {
+  const pinNames = [
+    "VCC","GND","A0","A1","A2","A3","A4","A5","A6","A7","A8","A9",
+    "A10","A11","A12","A13","A14","A15","A16","A17","A18","A19","A20","A21",
+    "D0","D1","D2","D3","D4","D5","D6","D7","D8","D9","D10","D11",
+    "D12","D13","D14","D15","/RAS","/CAS","/WE","VCC","GND","XCLK","CCKQ","CCK",
+  ];
+  const dirs: Array<"IN"|"OUT"|"BI"|"PWR"|"GND"> = ["PWR","GND","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","OUT","OUT","OUT","PWR","GND","IN","IN","IN"];
+  return Array.from({ length: 48 }, (_, i) => ({
+    number: i + 1,
+    name: pinNames[i] || `P${i + 1}`,
+    signal: pinNames[i] || `SIG${i + 1}`,
+    direction: dirs[i] || "BI",
+    description: getPinDescription(pinNames[i] || `P${i+1}`),
+  }));
+}
+
+function generatePaulaPins(): PinData[] {
+  const pinNames = [
+    "VCC","GND","D0","D1","D2","D3","D4","D5","D6","D7",
+    "A0","A1","A2","A3","A4","A5","A6","A7","A8","A9",
+    "A10","A11","/RW","C1","C3","CCK","CCKQ","/OVR",
+    "/INT2","/INT3","/INT6","/IPL0","/IPL1","/IPL2",
+    "/RES","RXD","TXD","/RTS","/CTS","ACH0","ACH1",
+    "ACH2","ACH3","DMAL","/DKBR","DKRD","DKWD","DKWE",
+    "XCLK","XCLKEN","VCC","GND",
+  ];
+  const dirs: Array<"IN"|"OUT"|"BI"|"PWR"|"GND"> = ["PWR","GND","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","IN","IN","IN","IN","IN","OUT","OUT","OUT","OUT","OUT","OUT","OUT","IN","IN","OUT","OUT","IN","OUT","OUT","OUT","OUT","OUT","OUT","IN","OUT","OUT","IN","IN","PWR","GND"];
+  return Array.from({ length: 52 }, (_, i) => ({
+    number: i + 1,
+    name: pinNames[i] || `P${i + 1}`,
+    signal: pinNames[i] || `SIG${i + 1}`,
+    direction: dirs[i] || "BI",
+    description: getPinDescription(pinNames[i] || `P${i+1}`),
+  }));
+}
+
+function generateCPUPins(): PinData[] {
+  const pinNames = [
+    "D0","D1","D2","D3","D4","D5","D6","D7","D8","D9","D10","D11","D12","D13","D14","D15","D16","D17","D18","D19","D20","D21","D22","D23","D24","D25","D26","D27","D28","D29","D30","D31",
+    "A0","A1","A2","A3","A4","A5","A6","A7","A8","A9","A10","A11","A12","A13","A14","A15","A16","A17","A18","A19","A20","A21","A22","A23","A24","A25","A26","A27","A28","A29","A30","A31",
+    "/AS","/DS","/DTACK","R/W","/RESET","/HALT","VCC","GND",
+  ];
+  return Array.from({ length: 68 }, (_, i) => ({
+    number: i + 1,
+    name: pinNames[i] || `P${i + 1}`,
+    signal: pinNames[i] || `SIG${i + 1}`,
+    direction: (["VCC"].includes(pinNames[i]) ? "PWR" : pinNames[i] === "GND" ? "GND" : "BI") as "IN"|"OUT"|"BI"|"PWR"|"GND",
+    description: getPinDescription(pinNames[i] || `P${i+1}`),
+  }));
+}
+
+function getPinDescription(name: string): string {
+  const map: Record<string, string> = {
+    "VCC": "+5V power supply rail",
+    "GND": "Ground / 0V reference",
+    "/RES": "System reset (active low)",
+    "/RESET": "System reset (active low)",
+    "CCK": "Color clock (3.58/3.54 MHz)",
+    "CCKQ": "Color clock quadrature",
+    "C1": "Clock phase 1",
+    "C3": "Clock phase 3",
+    "/RAS0": "Row address strobe 0 (active low)",
+    "/RAS1": "Row address strobe 1 (active low)",
+    "/CAS0": "Column address strobe 0 (active low)",
+    "/CAS1": "Column address strobe 1 (active low)",
+    "/WE": "Write enable (active low)",
+    "DMAL": "DMA request line",
+    "DKRD": "Disk read data",
+    "DKWD": "Disk write data",
+    "DKWE": "Disk write enable",
+    "/DKBR": "Disk byte ready (active low)",
+    "RXD": "Serial receive data",
+    "TXD": "Serial transmit data",
+    "/RTS": "Request to send (active low)",
+    "/CTS": "Clear to send (active low)",
+    "/INT2": "Level 2 interrupt (active low)",
+    "/INT3": "Level 3 interrupt (active low)",
+    "/INT6": "Level 6 interrupt (active low)",
+    "/OVR": "Override (active low)",
+    "XCLK": "External clock input",
+    "XCLKEN": "External clock enable",
+    "ACH0": "Audio channel 0 output",
+    "ACH1": "Audio channel 1 output",
+    "ACH2": "Audio channel 2 output",
+    "ACH3": "Audio channel 3 output",
+    "/AS": "Address strobe (active low)",
+    "/DS": "Data strobe (active low)",
+    "/DTACK": "Data transfer acknowledge (active low)",
+    "R/W": "Read/Write direction",
+    "/HALT": "CPU halt (active low)",
+    "PHI2": "Phase 2 clock",
+    "/CS": "Chip select (active low)",
+    "/IRQ": "Interrupt request (active low)",
+    "TOD": "Time-of-day clock input",
+    "/FLAG": "External flag input (active low)",
+    "PC": "Peripheral control strobe",
+    "SP": "Serial port data",
+    "CNT": "Counter clock/input",
+    "NC": "No connect",
+  };
+  return map[name] || `${name} signal pin`;
+}

@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #080808;
+  --bg-secondary: #0f0f0f;
+  --bg-panel: #121212;
+  --bg-card: #181818;
+  --accent-amber: #E8A000;
+  --accent-amber-dim: #a87200;
+  --accent-orange: #FF6B35;
+  --phosphor-green: #7ECF7E;
+  --phosphor-green-bright: #AAFFAA;
+  --phosphor-green-dim: #3a7a3a;
+  --border-subtle: #1e1e1e;
+  --border-mid: #2a2a2a;
+  --border-accent: #3a3a3a;
+  --text-primary: #e0e0e0;
+  --text-muted: #666666;
+  --text-dim: #444444;
+  --pin-idle-bg: #0d1f0d;
+  --pin-hover-bg: #1a3a1a;
+  --pin-active-bg: #2a1a00;
+  --sidebar-width: 272px;
+  --viewer-width: 340px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border-accent); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-amber-dim); }
+
+/* CRT scanline overlay */
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+}
+
+/* Sidebar */
+.sidebar-slide {
+  width: var(--sidebar-width);
+  transform: translateX(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sidebar-slide.collapsed {
+  transform: translateX(calc(-1 * var(--sidebar-width)));
+}
+
+/* Toggle tab */
+.sidebar-toggle-tab {
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Chip link hover glow */
+.chip-link {
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+}
+.chip-link::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, var(--phosphor-green-dim), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.chip-link:hover::before { opacity: 0.3; }
+.chip-link.active-chip::before {
+  background: linear-gradient(135deg, var(--accent-amber-dim), transparent);
+  opacity: 0.5;
+}
+
+/* Pin glow animation */
+@keyframes pinPulse {
+  0%, 100% { box-shadow: 0 0 4px var(--phosphor-green-dim); }
+  50% { box-shadow: 0 0 10px var(--phosphor-green), 0 0 20px rgba(126,207,126,0.3); }
+}
+.pin-active-glow {
+  animation: pinPulse 1.5s ease-in-out infinite;
+}
+
+/* Amber glow for selected pin */
+@keyframes amberPulse {
+  0%, 100% { box-shadow: 0 0 6px var(--accent-amber-dim); }
+  50% { box-shadow: 0 0 16px var(--accent-amber), 0 0 30px rgba(232,160,0,0.4); }
+}
+.pin-selected-glow {
+  animation: amberPulse 1.5s ease-in-out infinite;
+}
+
+/* GIF placeholder shimmer */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.gif-placeholder {
+  background: linear-gradient(
+    90deg,
+    #1a1a1a 25%,
+    #252525 37%,
+    #1a1a1a 63%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.8s infinite linear;
+}
+
+/* Waveform placeholder animation */
+@keyframes waveformScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.waveform-scroll {
+  animation: waveformScroll 4s linear infinite;
+}
+
+/* Terminal cursor blink */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor-blink {
+  animation: cursorBlink 1s step-end infinite;
+}
+
+/* Fade-in for viewer */
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.fade-in-right {
+  animation: fadeInRight 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Model badge */
+.model-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Amber underline on hover for nav */
+.nav-link-hover {
+  position: relative;
+}
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent-amber);
+  transition: width 0.2s;
+}
+.nav-link-hover:hover::after { width: 100%; }
+.nav-link-active::after { width: 100% !important; }
+
+/* IC Package SVG pins */
+.ic-pin rect {
+  transition: fill 0.15s, stroke 0.15s;
+}
+.ic-pin:hover rect {
+  fill: var(--pin-hover-bg);
+  stroke: var(--phosphor-green);
+  cursor: pointer;
+}
+.ic-pin.selected rect {
+  fill: var(--pin-active-bg);
+  stroke: var(--accent-amber);
+}
+.ic-pin text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 7px;
+  fill: var(--phosphor-green);
+  pointer-events: none;
+}
+.ic-pin.selected text { fill: var(--accent-amber); }
+
+/* Horizontal scrollable chip list */
+.chip-scroll-area {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-accent) transparent;
+}
+
+/* Status dot */
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.status-dot {
+  animation: statusPulse 2s ease-in-out infinite;
+}
