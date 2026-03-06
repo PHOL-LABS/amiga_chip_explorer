@@ -123,13 +123,21 @@ function WaveformPlaceholder({
 
       {/* GIF overlay */}
       <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.7)' }}>
-        <AppImage
-          src={gifPath}
-          alt={caption}
-          fill
-          className="w-full h-full object-cover"
-          fallbackSrc="/assets/images/no_image.png"
-        />
+        <a
+          href={gifPath}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block w-full h-full cursor-zoom-in"
+          aria-label={`Open full-resolution GIF for ${caption}`}
+        >
+          <AppImage
+            src={gifPath}
+            alt={caption}
+            fill
+            className="w-full h-full object-cover"
+            fallbackSrc="/assets/images/no_image.png"
+          />
+        </a>
         <div
           className="absolute left-2 bottom-2 px-1.5 py-1 rounded"
           style={{ background: 'rgba(0,0,0,0.8)', border: '1px solid #1e1e1e' }}
