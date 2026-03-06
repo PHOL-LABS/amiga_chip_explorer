@@ -61,7 +61,7 @@ function WaveformPlaceholder({
 
   return (
     <div
-      className="relative rounded overflow-hidden"
+      className="relative rounded overflow-hidden h-56"
       style={{ background: '#0a0a0a', border: '1px solid #1e1e1e' }}
     >
       {/* Grid */}
@@ -199,7 +199,7 @@ export default function SignalViewer({
     BI: 'BIDIRECTIONAL',
   };
 
-  const signalGifPath = `/assets/signals/${modelId}/${chipId}/pin${pin.number}.gif`;
+  var signalGifPath = `/assets/signals/${modelId}/${chipId}/pin${pin.number}.gif`;
 
   return (
     <div className="flex flex-col h-full fade-in-right" style={{ background: '#0a0a0a' }}>
@@ -282,6 +282,7 @@ export default function SignalViewer({
             OSCILLOSCOPE REFERENCE
           </p>
           <WaveformPlaceholder
+            key={signalGifPath}
             direction={pin.direction}
             gifPath={signalGifPath}
             caption={`PIN ${pin.number} · OSC`}
@@ -289,7 +290,7 @@ export default function SignalViewer({
         </div>
 
         {/* Secondary GIF placeholder */}
-        <div>
+        {/* <div>
           <p className="font-mono text-[10px] mb-2 tracking-widest" style={{ color: '#444' }}>
             LOGIC ANALYZER CAPTURE
           </p>
@@ -298,7 +299,7 @@ export default function SignalViewer({
             gifPath={signalGifPath}
             caption={`PIN ${pin.number} · LOGIC`}
           />
-        </div>
+        </div> */}
 
         {/* Signal specs table */}
         <div>
