@@ -55,22 +55,22 @@ export default function ICPackageSVG({
     if (isPlcc) {
       // Distribute pins around 4 sides
       const perSide = Math.ceil(pinCount / 4);
-      return { type: 'plcc', perSide, chipW: 280, chipH: 280 };
+      return { type: 'plcc', perSide, chipW: 380, chipH: 380 };
     }
     if (isDip) {
       const halfPins = Math.ceil(pinCount / 2);
-      return { type: 'dip', halfPins, chipW: 120, chipH: Math.max(200, halfPins * 20 + 40) };
+      return { type: 'dip', halfPins, chipW: 170, chipH: Math.max(280, halfPins * 24 + 60) };
     }
     const perSide = Math.ceil(pinCount / 4);
-    return { type: 'plcc', perSide, chipW: 280, chipH: 280 };
+    return { type: 'plcc', perSide, chipW: 380, chipH: 380 };
   }, [pinCount, packageType]);
 
-  const PIN_LEN = 22;
-  const PIN_W = 14;
-  const PIN_H = 9;
-  const LABEL_OFFSET = 8;
+  const PIN_LEN = 30;
+  const PIN_W = 18;
+  const PIN_H = 12;
+  const LABEL_OFFSET = 12;
 
-  const svgPadding = 120;
+  const svgPadding = 160;
   const svgW = layout.chipW + svgPadding * 2;
   const svgH = layout.chipH + svgPadding * 2;
   const cx = svgW / 2;
@@ -137,7 +137,7 @@ export default function ICPackageSVG({
             y={py + PIN_LEN + LABEL_OFFSET + 7}
             textAnchor="middle"
             fill={text}
-            fontSize={6.5}
+            fontSize={10}
             fontFamily="JetBrains Mono, monospace"
             fontWeight={isSelected ? 700 : 400}
           >
@@ -148,7 +148,7 @@ export default function ICPackageSVG({
             y={py + PIN_LEN + LABEL_OFFSET + 16}
             textAnchor="middle"
             fill="#333"
-            fontSize={5.5}
+            fontSize={8.5}
             fontFamily="JetBrains Mono, monospace"
           >
             {pin.number}
@@ -199,18 +199,18 @@ export default function ICPackageSVG({
             y={py + 2.5}
             textAnchor="end"
             fill={text}
-            fontSize={6.5}
+            fontSize={10}
             fontFamily="JetBrains Mono, monospace"
             fontWeight={isSelected ? 700 : 400}
           >
             {pin.name.length > 6 ? pin.name.slice(0, 5) + '…' : pin.name}
           </text>
           <text
-            x={px - PIN_LEN - LABEL_OFFSET - 22}
-            y={py + 2.5}
+            x={px - PIN_LEN - LABEL_OFFSET - 30}
+            y={py + 3.5}
             textAnchor="end"
             fill="#333"
-            fontSize={5.5}
+            fontSize={8.5}
             fontFamily="JetBrains Mono, monospace"
           >
             {pin.number}
@@ -261,7 +261,7 @@ export default function ICPackageSVG({
             y={py - PIN_LEN - LABEL_OFFSET}
             textAnchor="middle"
             fill={text}
-            fontSize={6.5}
+            fontSize={10}
             fontFamily="JetBrains Mono, monospace"
             fontWeight={isSelected ? 700 : 400}
           >
@@ -269,10 +269,10 @@ export default function ICPackageSVG({
           </text>
           <text
             x={px}
-            y={py - PIN_LEN - LABEL_OFFSET - 8}
+            y={py - PIN_LEN - LABEL_OFFSET - 11}
             textAnchor="middle"
             fill="#333"
-            fontSize={5.5}
+            fontSize={8.5}
             fontFamily="JetBrains Mono, monospace"
           >
             {pin.number}
@@ -323,18 +323,18 @@ export default function ICPackageSVG({
             y={py + 2.5}
             textAnchor="start"
             fill={text}
-            fontSize={6.5}
+            fontSize={10}
             fontFamily="JetBrains Mono, monospace"
             fontWeight={isSelected ? 700 : 400}
           >
             {pin.name.length > 6 ? pin.name.slice(0, 5) + '…' : pin.name}
           </text>
           <text
-            x={px + PIN_LEN + LABEL_OFFSET + 26}
-            y={py + 2.5}
+            x={px + PIN_LEN + LABEL_OFFSET + 38}
+            y={py + 3.5}
             textAnchor="start"
             fill="#333"
-            fontSize={5.5}
+            fontSize={8.5}
             fontFamily="JetBrains Mono, monospace"
           >
             {pin.number}
@@ -380,20 +380,20 @@ export default function ICPackageSVG({
           />
           <text
             x={px - PIN_LEN - 6}
-            y={py + 2.5}
+            y={py + 4}
             textAnchor="end"
             fill={text}
-            fontSize={6.5}
+            fontSize={10}
             fontFamily="JetBrains Mono, monospace"
           >
             {pin.name.length > 7 ? pin.name.slice(0, 6) + '…' : pin.name}
           </text>
           <text
-            x={px - PIN_LEN - 30}
-            y={py + 2.5}
+            x={px - PIN_LEN - 40}
+            y={py + 4}
             textAnchor="end"
             fill="#333"
-            fontSize={5.5}
+            fontSize={8.5}
             fontFamily="JetBrains Mono, monospace"
           >
             {pin.number}
@@ -430,20 +430,20 @@ export default function ICPackageSVG({
           />
           <text
             x={px + PIN_LEN + 6}
-            y={py + 2.5}
+            y={py + 4}
             textAnchor="start"
             fill={text}
-            fontSize={6.5}
+            fontSize={10}
             fontFamily="JetBrains Mono, monospace"
           >
             {pin.name.length > 7 ? pin.name.slice(0, 6) + '…' : pin.name}
           </text>
           <text
-            x={px + PIN_LEN + 34}
-            y={py + 2.5}
+            x={px + PIN_LEN + 44}
+            y={py + 4}
             textAnchor="start"
             fill="#333"
-            fontSize={5.5}
+            fontSize={8.5}
             fontFamily="JetBrains Mono, monospace"
           >
             {pin.number}
@@ -472,14 +472,14 @@ export default function ICPackageSVG({
             <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#111" strokeWidth="0.5" />
           </pattern>
           <filter id="chipGlow">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
             <feMerge>
               <feMergeNode in="coloredBlur" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
           <filter id="pinGlow">
-            <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
+            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
             <feMerge>
               <feMergeNode in="coloredBlur" />
               <feMergeNode in="SourceGraphic" />
@@ -495,7 +495,7 @@ export default function ICPackageSVG({
           y={chipY}
           width={chipW}
           height={chipH}
-          rx={layout.type === 'plcc' ? 8 : 4}
+          rx={layout.type === 'plcc' ? 10 : 6}
           fill="#141414"
           stroke="#2a2a2a"
           strokeWidth={2}
@@ -503,11 +503,11 @@ export default function ICPackageSVG({
         />
         {/* Inner body */}
         <rect
-          x={chipX + 8}
-          y={chipY + 8}
-          width={chipW - 16}
-          height={chipH - 16}
-          rx={4}
+          x={chipX + 10}
+          y={chipY + 10}
+          width={chipW - 20}
+          height={chipH - 20}
+          rx={6}
           fill="#181818"
           stroke="#1e1e1e"
           strokeWidth={1}
@@ -515,10 +515,10 @@ export default function ICPackageSVG({
 
         {/* Pin 1 marker (notch/dot) */}
         {layout.type === 'plcc' ? (
-          <circle cx={chipX + 20} cy={chipY + chipH - 20} r={4} fill="#E8A000" opacity={0.7} />
+          <circle cx={chipX + 26} cy={chipY + chipH - 26} r={6} fill="#E8A000" opacity={0.7} />
         ) : (
           <path
-            d={`M ${chipX + chipW / 2 - 16} ${chipY} Q ${chipX + chipW / 2} ${chipY + 12} ${chipX + chipW / 2 + 16} ${chipY}`}
+            d={`M ${chipX + chipW / 2 - 22} ${chipY} Q ${chipX + chipW / 2} ${chipY + 16} ${chipX + chipW / 2 + 22} ${chipY}`}
             fill="#141414"
             stroke="#2a2a2a"
             strokeWidth={1.5}
@@ -528,10 +528,10 @@ export default function ICPackageSVG({
         {/* Chip label */}
         <text
           x={cx}
-          y={cy - 16}
+          y={cy - 22}
           textAnchor="middle"
           fill="#E8A000"
-          fontSize={13}
+          fontSize={17}
           fontFamily="JetBrains Mono, monospace"
           fontWeight={700}
           letterSpacing={2}
@@ -540,10 +540,10 @@ export default function ICPackageSVG({
         </text>
         <text
           x={cx}
-          y={cy + 2}
+          y={cy + 5}
           textAnchor="middle"
           fill="#666"
-          fontSize={8}
+          fontSize={11}
           fontFamily="JetBrains Mono, monospace"
           letterSpacing={1}
         >
@@ -551,10 +551,10 @@ export default function ICPackageSVG({
         </text>
         <text
           x={cx}
-          y={cy + 16}
+          y={cy + 28}
           textAnchor="middle"
           fill="#333"
-          fontSize={7}
+          fontSize={9}
           fontFamily="JetBrains Mono, monospace"
         >
           {packageType} · {pinCount}p

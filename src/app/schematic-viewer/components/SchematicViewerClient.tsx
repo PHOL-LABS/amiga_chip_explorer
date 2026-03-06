@@ -114,8 +114,8 @@ export default function SchematicViewerClient() {
       <div
         className="flex-shrink-0 flex flex-col border-r z-20"
         style={{
-          width: sidebarOpen ? 240 : 0,
-          minWidth: sidebarOpen ? 240 : 0,
+          width: sidebarOpen ? 280 : 0,
+          minWidth: sidebarOpen ? 280 : 0,
           background: '#0a0a0a',
           borderColor: '#1e1e1e',
           overflow: 'hidden',
@@ -129,8 +129,8 @@ export default function SchematicViewerClient() {
             className="px-4 py-2.5 flex items-center gap-2"
             style={{ background: '#080808', borderBottom: '1px solid #1e1e1e' }}
           >
-            <Icon name="ComputerDesktopIcon" size={12} style={{ color: '#E8A000' }} />
-            <span className="font-mono text-[10px] tracking-widest" style={{ color: '#E8A000' }}>
+            <Icon name="ComputerDesktopIcon" size={14} style={{ color: '#E8A000' }} />
+            <span className="font-mono text-xs tracking-widest" style={{ color: '#E8A000' }}>
               MODEL
             </span>
           </div>
@@ -147,7 +147,7 @@ export default function SchematicViewerClient() {
                 }}
               >
                 <span
-                  className="font-mono text-[11px] truncate"
+                  className="font-mono text-sm truncate"
                   style={{ color: selectedModel.id === model.id ? '#E8A000' : '#555' }}
                 >
                   {model.shortName}
@@ -163,8 +163,8 @@ export default function SchematicViewerClient() {
             className="px-4 py-2.5 flex items-center gap-2"
             style={{ background: '#080808', borderBottom: '1px solid #1e1e1e' }}
           >
-            <Icon name="CpuChipIcon" size={12} style={{ color: '#7ECF7E' }} />
-            <span className="font-mono text-[10px] tracking-widest" style={{ color: '#7ECF7E' }}>
+            <Icon name="CpuChipIcon" size={14} style={{ color: '#7ECF7E' }} />
+            <span className="font-mono text-xs tracking-widest" style={{ color: '#7ECF7E' }}>
               CHIPS
             </span>
           </div>
@@ -184,14 +184,14 @@ export default function SchematicViewerClient() {
                 }}
               >
                 <span
-                  className="font-mono text-[11px] font-medium"
+                  className="font-mono text-sm font-medium"
                   style={{ color: isActive ? '#AAFFAA' : '#7ECF7E' }}
                 >
                   {chip.name} {chip.partNumber}
                 </span>
                 <div className="flex items-center gap-1.5">
                   <span
-                    className="font-mono text-[9px] px-1.5 py-px rounded"
+                    className="font-mono text-xs px-2 py-0.5 rounded"
                     style={{
                       color: pkgColor,
                       background: `${pkgColor}15`,
@@ -200,7 +200,7 @@ export default function SchematicViewerClient() {
                   >
                     {chip.package}
                   </span>
-                  <span className="font-mono text-[9px]" style={{ color: '#333' }}>
+                  <span className="font-mono text-xs" style={{ color: '#333' }}>
                     {chip.pinCount}p
                   </span>
                 </div>
@@ -213,7 +213,7 @@ export default function SchematicViewerClient() {
         <div className="flex-shrink-0 p-3 border-t" style={{ borderColor: '#1e1e1e' }}>
           <Link
             href="/chip-library"
-            className="flex items-center gap-2 font-mono text-[10px] tracking-wide transition-colors hover:text-[#7ECF7E]"
+            className="flex items-center gap-2 font-mono text-xs tracking-wide transition-colors hover:text-[#7ECF7E]"
             style={{ color: '#444' }}
           >
             <Icon name="ArrowLeftIcon" size={11} />
@@ -227,7 +227,7 @@ export default function SchematicViewerClient() {
         onClick={() => setSidebarOpen(!sidebarOpen)}
         className="flex-shrink-0 flex items-center justify-center z-30 transition-all duration-200 hover:scale-110"
         style={{
-          width: 18,
+          width: 24,
           background: '#0d1a0d',
           border: 'none',
           borderRight: '1px solid #3a7a3a',
@@ -237,7 +237,7 @@ export default function SchematicViewerClient() {
       >
         <Icon
           name={sidebarOpen ? 'ChevronLeftIcon' : 'ChevronRightIcon'}
-          size={12}
+          size={14}
           style={{ color: '#3a7a3a' }}
         />
       </button>
@@ -254,20 +254,20 @@ export default function SchematicViewerClient() {
               <span className="font-mono font-bold text-sm" style={{ color: '#E8A000' }}>
                 {selectedChip?.name || '—'}
               </span>
-              <span className="font-mono text-xs" style={{ color: '#555' }}>
+              <span className="font-mono text-sm" style={{ color: '#777' }}>
                 {selectedChip?.partNumber}
               </span>
             </div>
             <div className="flex items-center gap-3">
-              <span className="font-mono text-[10px]" style={{ color: '#444' }}>
+              <span className="font-mono text-xs" style={{ color: '#444' }}>
                 {selectedModel.name}
               </span>
               <span style={{ color: '#2a2a2a' }}>·</span>
-              <span className="font-mono text-[10px]" style={{ color: '#444' }}>
+              <span className="font-mono text-xs" style={{ color: '#444' }}>
                 {selectedChip?.package}
               </span>
               <span style={{ color: '#2a2a2a' }}>·</span>
-              <span className="font-mono text-[10px]" style={{ color: '#444' }}>
+              <span className="font-mono text-xs" style={{ color: '#444' }}>
                 {selectedChip?.pinCount} PINS
               </span>
             </div>
@@ -284,7 +284,7 @@ export default function SchematicViewerClient() {
             ].map((item) => (
               <div key={item.label} className="flex items-center gap-1">
                 <span className="w-2 h-2 rounded-sm" style={{ background: item.color }} />
-                <span className="font-mono text-[10px]" style={{ color: '#444' }}>
+                <span className="font-mono text-xs" style={{ color: '#444' }}>
                   {item.label}
                 </span>
               </div>
@@ -297,7 +297,7 @@ export default function SchematicViewerClient() {
               className="flex items-center gap-2 px-3 py-1.5 rounded"
               style={{ background: '#1a1200', border: '1px solid #E8A00040' }}
             >
-              <span className="font-mono text-[10px]" style={{ color: '#E8A000' }}>
+              <span className="font-mono text-sm" style={{ color: '#E8A000' }}>
                 PIN {selectedPin.number}: {selectedPin.name}
               </span>
             </div>
@@ -331,7 +331,7 @@ export default function SchematicViewerClient() {
               style={{ background: 'rgba(8,8,8,0.9)', border: '1px solid #1e1e1e' }}
             >
               <Icon name="CursorArrowRaysIcon" size={14} style={{ color: '#444' }} />
-              <span className="font-mono text-[11px]" style={{ color: '#444' }}>
+              <span className="font-mono text-sm" style={{ color: '#444' }}>
                 Click any pin to view signal reference
               </span>
             </div>
@@ -347,13 +347,13 @@ export default function SchematicViewerClient() {
             className="w-1.5 h-1.5 rounded-full animate-status-pulse"
             style={{ background: '#7ECF7E' }}
           />
-          <span className="font-mono text-[10px]" style={{ color: '#333' }}>
+          <span className="font-mono text-xs" style={{ color: '#333' }}>
             {pins.length} pins loaded
           </span>
           {selectedPin && (
             <>
               <span style={{ color: '#1e1e1e' }}>·</span>
-              <span className="font-mono text-[10px]" style={{ color: '#444' }}>
+              <span className="font-mono text-xs" style={{ color: '#444' }}>
                 Selected: Pin {selectedPin.number} ({selectedPin.name})
               </span>
             </>
@@ -393,7 +393,7 @@ export default function SchematicViewerClient() {
           >
             <Icon name="SignalIcon" size={16} style={{ color: selectedPin ? '#E8A000' : '#333' }} />
             <div
-              className="font-mono text-[10px] tracking-widest"
+              className="font-mono text-xs tracking-widest"
               style={{
                 color: selectedPin ? '#555' : '#2a2a2a',
                 writingMode: 'vertical-rl',
