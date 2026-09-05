@@ -9,11 +9,11 @@
   --bg-secondary: #0f0f0f;
   --bg-panel: #121212;
   --bg-card: #181818;
-  --accent-amber: #E8A000;
+  --accent-amber: #e8a000;
   --accent-amber-dim: #a87200;
-  --accent-orange: #FF6B35;
-  --phosphor-green: #7ECF7E;
-  --phosphor-green-bright: #AAFFAA;
+  --accent-orange: #ff6b35;
+  --phosphor-green: #7ecf7e;
+  --phosphor-green-bright: #aaffaa;
   --phosphor-green-dim: #3a7a3a;
   --border-subtle: #1e1e1e;
   --border-mid: #2a2a2a;
@@ -40,14 +40,26 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.45;
   -webkit-font-smoothing: antialiased;
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 5px; height: 5px; }
-::-webkit-scrollbar-track { background: var(--bg-primary); }
-::-webkit-scrollbar-thumb { background: var(--border-accent); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--accent-amber-dim); }
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-amber-dim);
+}
 
 /* CRT scanline overlay */
 .crt-overlay {
@@ -59,8 +71,8 @@ body {
     0deg,
     transparent,
     transparent 2px,
-    rgba(0,0,0,0.03) 2px,
-    rgba(0,0,0,0.03) 4px
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
   );
 }
 
@@ -93,7 +105,9 @@ body {
   opacity: 0;
   transition: opacity 0.2s;
 }
-.chip-link:hover::before { opacity: 0.3; }
+.chip-link:hover::before {
+  opacity: 0.3;
+}
 .chip-link.active-chip::before {
   background: linear-gradient(135deg, var(--accent-amber-dim), transparent);
   opacity: 0.5;
@@ -101,8 +115,15 @@ body {
 
 /* Pin glow animation */
 @keyframes pinPulse {
-  0%, 100% { box-shadow: 0 0 4px var(--phosphor-green-dim); }
-  50% { box-shadow: 0 0 10px var(--phosphor-green), 0 0 20px rgba(126,207,126,0.3); }
+  0%,
+  100% {
+    box-shadow: 0 0 4px var(--phosphor-green-dim);
+  }
+  50% {
+    box-shadow:
+      0 0 10px var(--phosphor-green),
+      0 0 20px rgba(126, 207, 126, 0.3);
+  }
 }
 .pin-active-glow {
   animation: pinPulse 1.5s ease-in-out infinite;
@@ -110,8 +131,15 @@ body {
 
 /* Amber glow for selected pin */
 @keyframes amberPulse {
-  0%, 100% { box-shadow: 0 0 6px var(--accent-amber-dim); }
-  50% { box-shadow: 0 0 16px var(--accent-amber), 0 0 30px rgba(232,160,0,0.4); }
+  0%,
+  100% {
+    box-shadow: 0 0 6px var(--accent-amber-dim);
+  }
+  50% {
+    box-shadow:
+      0 0 16px var(--accent-amber),
+      0 0 30px rgba(232, 160, 0, 0.4);
+  }
 }
 .pin-selected-glow {
   animation: amberPulse 1.5s ease-in-out infinite;
@@ -119,24 +147,27 @@ body {
 
 /* GIF placeholder shimmer */
 @keyframes shimmer {
-  0% { background-position: -400px 0; }
-  100% { background-position: 400px 0; }
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
 }
 .gif-placeholder {
-  background: linear-gradient(
-    90deg,
-    #1a1a1a 25%,
-    #252525 37%,
-    #1a1a1a 63%
-  );
+  background: linear-gradient(90deg, #1a1a1a 25%, #252525 37%, #1a1a1a 63%);
   background-size: 800px 100%;
   animation: shimmer 1.8s infinite linear;
 }
 
 /* Waveform placeholder animation */
 @keyframes waveformScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 .waveform-scroll {
   animation: waveformScroll 4s linear infinite;
@@ -144,8 +175,13 @@ body {
 
 /* Terminal cursor blink */
 @keyframes cursorBlink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 .cursor-blink {
   animation: cursorBlink 1s step-end infinite;
@@ -153,8 +189,14 @@ body {
 
 /* Fade-in for viewer */
 @keyframes fadeInRight {
-  from { opacity: 0; transform: translateX(20px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 .fade-in-right {
   animation: fadeInRight 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -182,12 +224,18 @@ body {
   background: var(--accent-amber);
   transition: width 0.2s;
 }
-.nav-link-hover:hover::after { width: 100%; }
-.nav-link-active::after { width: 100% !important; }
+.nav-link-hover:hover::after {
+  width: 100%;
+}
+.nav-link-active::after {
+  width: 100% !important;
+}
 
 /* IC Package SVG pins */
 .ic-pin rect {
-  transition: fill 0.15s, stroke 0.15s;
+  transition:
+    fill 0.15s,
+    stroke 0.15s;
 }
 .ic-pin:hover rect {
   fill: var(--pin-hover-bg);
@@ -204,7 +252,9 @@ body {
   fill: var(--phosphor-green);
   pointer-events: none;
 }
-.ic-pin.selected text { fill: var(--accent-amber); }
+.ic-pin.selected text {
+  fill: var(--accent-amber);
+}
 
 /* Horizontal scrollable chip list */
 .chip-scroll-area {
@@ -214,8 +264,13 @@ body {
 
 /* Status dot */
 @keyframes statusPulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
 .status-dot {
   animation: statusPulse 2s ease-in-out infinite;
