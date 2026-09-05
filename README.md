@@ -3,6 +3,7 @@
 Amiga Chip Explorer is a retro-styled reference application for exploring key custom and support ICs across classic Commodore Amiga systems.
 
 It provides two main workflows:
+
 - **Chip Library**: browse chips by Amiga model and review package, pin-count, and function metadata.
 - **Schematic Viewer**: inspect an individual chip package, click pins, and view signal-level reference media.
 
@@ -15,6 +16,7 @@ It provides two main workflows:
 ## Supported Amiga Models
 
 The current dataset includes:
+
 - A1200
 - A600
 - A500
@@ -54,10 +56,44 @@ npm run dev
 
 Open [http://localhost:4028](http://localhost:4028).
 
+## Static deployment
+
+The application is exported to `out/`. By default it targets the `/achip-explorer` deployment
+folder used on `phol-labs.com`.
+
+For `https://phol-labs.com/achip-explorer/index.html`:
+
+```bash
+npm run build
+```
+
+Upload the contents of `out/` into the host's `achip-explorer/` folder.
+
+For a different subfolder:
+
+```bash
+npm run build -- --base-path=/different-folder
+```
+
+For a site hosted at the domain root, such as `https://website2.com/index.html`:
+
+```bash
+npm run build:root
+```
+
+Upload the contents of `out/` to the website document root. The build validates generated URLs
+and writes the selected target to `out/deployment-info.json`. Rebuild when the deployment folder
+changes.
+
+Do not open `out/index.html` directly with a `file://` URL. Test it through an HTTP server or on
+the hosting account so that JavaScript modules and nested routes are served correctly.
+
 ## Available Scripts
 
 - `npm run dev` — start development server on port `4028`
-- `npm run build` — build for production
+- `npm run build` — create a `/achip-explorer` static export
+- `npm run build:root` — create a root-hosted static export
+- `npm run build -- --base-path=/folder` — create a subfolder-hosted static export
 - `npm run serve` — run production server
 - `npm run lint` — run ESLint checks
 - `npm run lint:fix` — auto-fix lint issues where possible

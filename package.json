@@ -40,7 +40,8 @@
   },
   "scripts": {
     "dev": "next dev -p 4028",
-    "build": "next build",
+    "build": "node scripts/build.mjs",
+    "build:root": "node scripts/build.mjs --base-path=/",
     "start": "next dev -p 4028",
     "lint": "next lint",
     "lint:fix": "next lint --fix",

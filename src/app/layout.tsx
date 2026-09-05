@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata, Viewport } from 'next';
+import { withBasePath } from '@/lib/basePath';
 import '../styles/index.css';
 
 export const viewport: Viewport = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: 'Next.js with Tailwind CSS',
   description: 'A boilerplate project with Next.js and Tailwind CSS',
   icons: {
-    icon: [{ url: '/assets/images/app_logo.png', type: 'image/x-icon' }],
+    icon: [{ url: withBasePath('/assets/images/app_logo.png'), type: 'image/x-icon' }],
   },
 };
 

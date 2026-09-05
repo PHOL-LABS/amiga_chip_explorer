@@ -3,6 +3,7 @@
 import { PinData } from '@/app/chip-library/components/AmigaData';
 import Icon from '@/components/ui/AppIcon';
 import AppImage from '@/components/ui/AppImage';
+import { withBasePath } from '@/lib/basePath';
 
 interface SignalViewerProps {
   pin: PinData | null;
@@ -142,7 +143,10 @@ function WaveformPlaceholder({
           className="absolute left-2 bottom-2 px-1.5 py-1 rounded"
           style={{ background: 'var(--media-caption)', border: '1px solid var(--border-subtle)' }}
         >
-          <span className="font-mono text-[9px] tracking-wide" style={{ color: 'var(--text-muted)' }}>
+          <span
+            className="font-mono text-[9px] tracking-wide"
+            style={{ color: 'var(--text-muted)' }}
+          >
             {caption}
           </span>
         </div>
@@ -196,8 +200,8 @@ export default function SignalViewer({
     IN: 'var(--phosphor-green)',
     OUT: 'var(--accent-amber)',
     BI: 'var(--accent-blue)',
-    NC: "var(--text-soft)",
-    UNKNOWN: "var(--text-secondary)",
+    NC: 'var(--text-soft)',
+    UNKNOWN: 'var(--text-secondary)',
   };
   const dirColor = dirColors[pin.direction] || 'var(--text-secondary)';
 
@@ -207,14 +211,17 @@ export default function SignalViewer({
     IN: 'INPUT',
     OUT: 'OUTPUT',
     BI: 'BIDIRECTIONAL',
-    NC: "NO CONNECT",
-    UNKNOWN: "UNSPECIFIED",
+    NC: 'NO CONNECT',
+    UNKNOWN: 'UNSPECIFIED',
   };
 
-  const signalGifPath = `/assets/signals/${modelId}/${chipId}/pin${pin.number}.gif`;
+  const signalGifPath = withBasePath(`/assets/signals/${modelId}/${chipId}/pin${pin.number}.gif`);
 
   return (
-    <div className="flex flex-col h-full fade-in-right" style={{ background: 'var(--bg-secondary)' }}>
+    <div
+      className="flex flex-col h-full fade-in-right"
+      style={{ background: 'var(--bg-secondary)' }}
+    >
       {/* Header */}
       <div
         className="flex-shrink-0 px-4 py-3 border-b flex items-center justify-between"
@@ -239,12 +246,18 @@ export default function SignalViewer({
       </div>
 
       {/* Pin info */}
-      <div className="flex-shrink-0 px-4 py-4 border-b" style={{ borderColor: 'var(--border-subtle)' }}>
+      <div
+        className="flex-shrink-0 px-4 py-4 border-b"
+        style={{ borderColor: 'var(--border-subtle)' }}
+      >
         {/* Pin number + name */}
         <div className="flex items-center gap-3 mb-3">
           <div
             className="w-9 h-9 rounded flex items-center justify-center flex-shrink-0"
-            style={{ background: 'var(--bg-strong)', border: `1px solid color-mix(in srgb, ${dirColor} 25%, transparent)` }}
+            style={{
+              background: 'var(--bg-strong)',
+              border: `1px solid color-mix(in srgb, ${dirColor} 25%, transparent)`,
+            }}
           >
             <span className="font-mono font-bold text-sm" style={{ color: dirColor }}>
               {pin.number}
@@ -274,7 +287,11 @@ export default function SignalViewer({
           </span>
           <span
             className="font-mono text-[10px] px-2 py-0.5 rounded"
-            style={{ color: 'var(--text-soft)', background: 'var(--grid-line)', border: '1px solid var(--border-subtle)' }}
+            style={{
+              color: 'var(--text-soft)',
+              background: 'var(--grid-line)',
+              border: '1px solid var(--border-subtle)',
+            }}
           >
             {pin.signal}
           </span>
@@ -290,7 +307,10 @@ export default function SignalViewer({
       <div className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-4">
         {/* Primary GIF placeholder */}
         <div>
-          <p className="font-mono text-[10px] mb-2 tracking-widest" style={{ color: 'var(--text-dim)' }}>
+          <p
+            className="font-mono text-[10px] mb-2 tracking-widest"
+            style={{ color: 'var(--text-dim)' }}
+          >
             OSCILLOSCOPE REFERENCE
           </p>
           <WaveformPlaceholder
@@ -315,10 +335,16 @@ export default function SignalViewer({
 
         {/* Signal specs table */}
         <div>
-          <p className="font-mono text-[10px] mb-2 tracking-widest" style={{ color: 'var(--text-dim)' }}>
+          <p
+            className="font-mono text-[10px] mb-2 tracking-widest"
+            style={{ color: 'var(--text-dim)' }}
+          >
             SIGNAL PARAMETERS
           </p>
-          <div className="rounded overflow-hidden" style={{ border: '1px solid var(--border-subtle)' }}>
+          <div
+            className="rounded overflow-hidden"
+            style={{ border: '1px solid var(--border-subtle)' }}
+          >
             {[
               { label: 'Pin', value: `${pin.number}` },
               { label: 'Net', value: pin.signal },
@@ -341,7 +367,10 @@ export default function SignalViewer({
                 >
                   {row.label}
                 </span>
-                <span className="font-mono text-[10px] px-3 py-2 flex-1" style={{ color: 'var(--text-secondary)' }}>
+                <span
+                  className="font-mono text-[10px] px-3 py-2 flex-1"
+                  style={{ color: 'var(--text-secondary)' }}
+                >
                   {row.value}
                 </span>
               </div>
@@ -350,14 +379,20 @@ export default function SignalViewer({
         </div>
 
         {/* Notes */}
-        <div className="rounded p-3" style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border-subtle)' }}>
+        <div
+          className="rounded p-3"
+          style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border-subtle)' }}
+        >
           <div className="flex items-center gap-1.5 mb-2">
             <Icon name="InformationCircleIcon" size={12} style={{ color: 'var(--text-dim)' }} />
             <span className="font-mono text-[10px]" style={{ color: 'var(--text-dim)' }}>
               NOTES
             </span>
           </div>
-          <p className="font-mono text-[10px] leading-relaxed" style={{ color: 'var(--text-faint)' }}>
+          <p
+            className="font-mono text-[10px] leading-relaxed"
+            style={{ color: 'var(--text-faint)' }}
+          >
             GIF images are loaded automatically from{' '}
             <code>
               /public/assets/signals/{modelId}/{chipId}/pin{pin.number}.gif
