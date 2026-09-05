@@ -376,6 +376,8 @@ export default function SchematicViewerClient() {
         {viewerOpen ? (
           <SignalViewer
             pin={selectedPin}
+            modelId={selectedModel.id}
+            chipId={selectedChip?.id || ""}
             chipName={selectedChip?.name || ""}
             partNumber={selectedChip?.partNumber || ""}
             onClose={() => setViewerOpen(false)}
