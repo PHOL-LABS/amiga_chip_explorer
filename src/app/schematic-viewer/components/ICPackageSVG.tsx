@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { PinData } from "@/app/chip-library/components/AmigaData";
 
 interface ICPackageSVGProps {
@@ -9,35 +9,46 @@ interface ICPackageSVGProps {
   chipName: string;
   partNumber: string;
   pins: PinData[];
-  selectedPin: number | null;
+  selectedPin: PinData["number"] | null;
   onPinClick: (pin: PinData) => void;
 }
 
 function getPinColor(dir: PinData["direction"], isSelected: boolean, isHovered: boolean): { fill: string; stroke: string; text: string } {
-  if (isSelected) return { fill: "#2a1a00", stroke: "#E8A000", text: "#E8A000" };
-  if (isHovered) return { fill: "#1a3a1a", stroke: "#7ECF7E", text: "#AAFFAA" };
+  if (isSelected) return { fill: "var(--pin-active-bg)", stroke: "var(--accent-amber)", text: "var(--accent-amber)" };
+  if (isHovered) return { fill: "var(--pin-hover-bg)", stroke: "var(--phosphor-green)", text: "var(--phosphor-green-bright)" };
   switch (dir) {
-    case "PWR": return { fill: "#1a0a0a", stroke: "#5a1a1a", text: "#ff6b6b" };
-    case "GND": return { fill: "#0a0a1a", stroke: "#1a1a5a", text: "#6b9bff" };
-    case "IN":  return { fill: "#0d1a0d", stroke: "#1a3a1a", text: "#7ECF7E" };
-    case "OUT": return { fill: "#1a1200", stroke: "#3a2a00", text: "#E8A000" };
-    case "BI":  return { fill: "#0d1520", stroke: "#1a3040", text: "#60a5fa" };
-    case "NC": return { fill: "#111", stroke: "#262626", text: "#555" };
-    case "UNKNOWN": return { fill: "#141414", stroke: "#333", text: "#888" };
-    default:    return { fill: "#141414", stroke: "#2a2a2a", text: "#888" };
+    case "PWR": return { fill: "var(--pin-power-bg)", stroke: "var(--pin-power-stroke)", text: "var(--accent-red)" };
+    case "GND": return { fill: "var(--pin-ground-bg)", stroke: "var(--pin-ground-stroke)", text: "var(--accent-ground)" };
+    case "IN":  return { fill: "var(--bg-success)", stroke: "var(--pin-hover-bg)", text: "var(--phosphor-green)" };
+    case "OUT": return { fill: "var(--bg-active)", stroke: "var(--pin-output-stroke)", text: "var(--accent-amber)" };
+    case "BI":  return { fill: "var(--pin-bi-bg)", stroke: "var(--pin-bi-stroke)", text: "var(--accent-blue)" };
+    case "NC": return { fill: "var(--pin-nc-bg)", stroke: "var(--pin-nc-stroke)", text: "var(--text-soft)" };
+    case "UNKNOWN": return { fill: "var(--bg-strong)", stroke: "var(--text-faint)", text: "var(--text-secondary)" };
+    default:    return { fill: "var(--bg-strong)", stroke: "var(--border-mid)", text: "var(--text-secondary)" };
   }
 }
 
 export default function ICPackageSVG({
   pinCount, packageType, chipName, partNumber, pins, selectedPin, onPinClick
 }: ICPackageSVGProps) {
-  const [hoveredPin, setHoveredPin] = useState<number | null>(null);
+  const [hoveredPin, setHoveredPin] = useState<PinData["number"] | null>(null);
 
   // Calculate layout based on package type
   const layout = useMemo(() => {
-    // PLCC packages: pins on all 4 sides
+    // PLCC and QFP packages have pins on all four sides, but use
+    // different pin-one positions and numbering directions.
     const isPlcc = packageType.startsWith("PLCC");
+    const isQfp = packageType.startsWith("PQFP") || packageType.startsWith("QFP");
+    const isPga = packageType.startsWith("PGA");
     const isDip = packageType.startsWith("DIP");
+    if (isPga) {
+      return { type: "pga", gridSize: 13, chipW: 360, chipH: 360 };
+    }
+    if (isQfp) {
+      const perSide = Math.ceil(pinCount / 4);
+      const bodySize = Math.max(280, perSide * 14);
+      return { type: "qfp", perSide, chipW: bodySize, chipH: bodySize };
+    }
     if (isPlcc) {
       // Distribute pins around 4 sides
       const perSide = Math.ceil(pinCount / 4);
@@ -67,18 +78,30 @@ export default function ICPackageSVG({
   const chipW = layout.chipW;
   const chipH = layout.chipH;
 
-  function renderPLCCPins() {
+  function renderQuadPins() {
     const elements: React.ReactElement[] = [];
     const perSide = layout.perSide!;
 
-    // Bottom side (pin 1 starts bottom-left, goes right)
-    // Left side goes up, Top goes right-to-left, Right goes down
-    // PLCC standard: pin 1 at bottom-left corner
+    let sideBottom: PinData[];
+    let sideLeft: PinData[];
+    let sideTop: PinData[];
+    let sideRight: PinData[];
 
-    const sideBottom = pins.slice(0, perSide);
-    const sideLeft = pins.slice(perSide, perSide * 2);
-    const sideTop = pins.slice(perSide * 2, perSide * 3);
-    const sideRight = pins.slice(perSide * 3, pinCount);
+    if (layout.type === "qfp") {
+      // QFP top view: pin 1 is at the upper-left; numbering proceeds
+      // counter-clockwise down the left edge and around the package.
+      sideLeft = pins.slice(0, perSide).reverse();
+      sideBottom = pins.slice(perSide, perSide * 2);
+      sideRight = pins.slice(perSide * 2, perSide * 3).reverse();
+      sideTop = pins.slice(perSide * 3, pinCount);
+    } else {
+      // PLCC top view used by the existing profiles: pin 1 starts at
+      // the bottom-left and numbering continues around all four sides.
+      sideBottom = pins.slice(0, perSide);
+      sideLeft = pins.slice(perSide, perSide * 2);
+      sideTop = pins.slice(perSide * 2, perSide * 3);
+      sideRight = pins.slice(perSide * 3, pinCount);
+    }
 
     const spacing = chipW / (perSide + 1);
 
@@ -125,7 +148,7 @@ export default function ICPackageSVG({
             x={px}
             y={py + PIN_LEN + LABEL_OFFSET + 16}
             textAnchor="middle"
-            fill="#333"
+            fill="var(--text-faint)"
             fontSize={5.5}
             fontFamily="JetBrains Mono, monospace"
           >
@@ -179,7 +202,7 @@ export default function ICPackageSVG({
             x={px - PIN_LEN - LABEL_OFFSET - 22}
             y={py + 2.5}
             textAnchor="end"
-            fill="#333"
+            fill="var(--text-faint)"
             fontSize={5.5}
             fontFamily="JetBrains Mono, monospace"
           >
@@ -233,7 +256,7 @@ export default function ICPackageSVG({
             x={px}
             y={py - PIN_LEN - LABEL_OFFSET - 8}
             textAnchor="middle"
-            fill="#333"
+            fill="var(--text-faint)"
             fontSize={5.5}
             fontFamily="JetBrains Mono, monospace"
           >
@@ -287,7 +310,7 @@ export default function ICPackageSVG({
             x={px + PIN_LEN + LABEL_OFFSET + 26}
             y={py + 2.5}
             textAnchor="start"
-            fill="#333"
+            fill="var(--text-faint)"
             fontSize={5.5}
             fontFamily="JetBrains Mono, monospace"
           >
@@ -324,7 +347,7 @@ export default function ICPackageSVG({
         >
           <rect x={px - PIN_LEN} y={py - PIN_H / 2} width={PIN_LEN} height={PIN_H} rx={2} fill={fill} stroke={stroke} strokeWidth={isSelected || isHovered ? 1.5 : 1} />
           <text x={px - PIN_LEN - 6} y={py + 2.5} textAnchor="end" fill={text} fontSize={6.5} fontFamily="JetBrains Mono, monospace">{pin.name.length > 7 ? pin.name.slice(0, 6) + "…" : pin.name}</text>
-          <text x={px - PIN_LEN - 30} y={py + 2.5} textAnchor="end" fill="#333" fontSize={5.5} fontFamily="JetBrains Mono, monospace">{pin.number}</text>
+          <text x={px - PIN_LEN - 30} y={py + 2.5} textAnchor="end" fill="var(--text-faint)" fontSize={5.5} fontFamily="JetBrains Mono, monospace">{pin.number}</text>
         </g>
       );
     }
@@ -347,7 +370,7 @@ export default function ICPackageSVG({
         >
           <rect x={px} y={py - PIN_H / 2} width={PIN_LEN} height={PIN_H} rx={2} fill={fill} stroke={stroke} strokeWidth={isSelected || isHovered ? 1.5 : 1} />
           <text x={px + PIN_LEN + 6} y={py + 2.5} textAnchor="start" fill={text} fontSize={6.5} fontFamily="JetBrains Mono, monospace">{pin.name.length > 7 ? pin.name.slice(0, 6) + "…" : pin.name}</text>
-          <text x={px + PIN_LEN + 34} y={py + 2.5} textAnchor="start" fill="#333" fontSize={5.5} fontFamily="JetBrains Mono, monospace">{pin.number}</text>
+          <text x={px + PIN_LEN + 34} y={py + 2.5} textAnchor="start" fill="var(--text-faint)" fontSize={5.5} fontFamily="JetBrains Mono, monospace">{pin.number}</text>
         </g>
       );
     });
@@ -355,8 +378,71 @@ export default function ICPackageSVG({
     return elements;
   }
 
+  function renderPGAPins() {
+    const rowNames = "ABCDEFGHJKLMN".split("");
+    const gridInset = 24;
+    const xSpacing = (chipW - gridInset * 2) / 12;
+    const ySpacing = (chipH - gridInset * 2) / 12;
+
+    return pins.map((pin) => {
+      const match = /^([A-HJ-N])(\d{1,2})$/.exec(String(pin.number));
+      if (!match) return null;
+
+      const row = rowNames.indexOf(match[1]);
+      const column = Number(match[2]) - 1;
+      if (row < 0 || column < 0 || column >= 13) return null;
+
+      const px = chipX + gridInset + column * xSpacing;
+      const py = chipY + gridInset + row * ySpacing;
+      const isSelected = selectedPin === pin.number;
+      const isHovered = hoveredPin === pin.number;
+      const { fill, stroke, text } = getPinColor(pin.direction, isSelected, isHovered);
+
+      return (
+        <g
+          key={`pga-${pin.number}`}
+          className="cursor-pointer"
+          onClick={() => onPinClick(pin)}
+          onMouseEnter={() => setHoveredPin(pin.number)}
+          onMouseLeave={() => setHoveredPin(null)}
+        >
+          <title>{`${pin.number}: ${pin.name}`}</title>
+          <circle
+            cx={px}
+            cy={py}
+            r={isSelected || isHovered ? 8 : 7}
+            fill={fill}
+            stroke={stroke}
+            strokeWidth={isSelected || isHovered ? 1.5 : 1}
+          />
+          <text
+            x={px}
+            y={py + 1.8}
+            textAnchor="middle"
+            fill={text}
+            fontSize={5}
+            fontFamily="JetBrains Mono, monospace"
+            fontWeight={isSelected ? 700 : 400}
+          >
+            {pin.number}
+          </text>
+          <text
+            x={px}
+            y={py + 12}
+            textAnchor="middle"
+            fill={text}
+            fontSize={4.5}
+            fontFamily="JetBrains Mono, monospace"
+          >
+            {pin.name.length > 7 ? `${pin.name.slice(0, 6)}…` : pin.name}
+          </text>
+        </g>
+      );
+    });
+  }
+
   return (
-    <div className="w-full h-full overflow-auto flex items-center justify-center" style={{ background: "#080808" }}>
+    <div className="w-full h-full overflow-auto flex items-center justify-center" style={{ background: "var(--bg-primary)" }}>
       <svg
         viewBox={`0 0 ${svgW} ${svgH}`}
         width={svgW}
@@ -366,7 +452,7 @@ export default function ICPackageSVG({
         {/* Background grid */}
         <defs>
           <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#111" strokeWidth="0.5" />
+            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="var(--grid-line)" strokeWidth="0.5" />
           </pattern>
           <filter id="chipGlow">
             <feGaussianBlur stdDeviation="3" result="coloredBlur" />
@@ -392,9 +478,9 @@ export default function ICPackageSVG({
           y={chipY}
           width={chipW}
           height={chipH}
-          rx={layout.type === "plcc" ? 8 : 4}
-          fill="#141414"
-          stroke="#2a2a2a"
+          rx={layout.type === "plcc" ? 8 : layout.type === "qfp" ? 2 : 4}
+          fill="var(--bg-strong)"
+          stroke="var(--border-mid)"
           strokeWidth={2}
           filter="url(#chipGlow)"
         />
@@ -405,16 +491,18 @@ export default function ICPackageSVG({
           width={chipW - 16}
           height={chipH - 16}
           rx={4}
-          fill="#181818"
-          stroke="#1e1e1e"
+          fill="var(--bg-card)"
+          stroke="var(--border-subtle)"
           strokeWidth={1}
         />
 
         {/* Pin 1 marker (notch/dot) */}
-        {layout.type === "plcc" ? (
-          <circle cx={chipX + 20} cy={chipY + chipH - 20} r={4} fill="#E8A000" opacity={0.7} />
+        {layout.type === "pga" ? null : layout.type === "qfp" ? (
+          <circle cx={chipX + 20} cy={chipY + 20} r={4} fill="var(--accent-amber)" opacity={0.7} />
+        ) : layout.type === "plcc" ? (
+          <circle cx={chipX + 20} cy={chipY + chipH - 20} r={4} fill="var(--accent-amber)" opacity={0.7} />
         ) : (
-          <path d={`M ${chipX + chipW/2 - 16} ${chipY} Q ${chipX + chipW/2} ${chipY + 12} ${chipX + chipW/2 + 16} ${chipY}`} fill="#141414" stroke="#2a2a2a" strokeWidth={1.5} />
+          <path d={`M ${chipX + chipW/2 - 16} ${chipY} Q ${chipX + chipW/2} ${chipY + 12} ${chipX + chipW/2 + 16} ${chipY}`} fill="var(--bg-strong)" stroke="var(--border-mid)" strokeWidth={1.5} />
         )}
 
         {/* Chip label */}
@@ -422,7 +510,7 @@ export default function ICPackageSVG({
           x={cx}
           y={cy - 16}
           textAnchor="middle"
-          fill="#E8A000"
+          fill="var(--accent-amber)"
           fontSize={13}
           fontFamily="JetBrains Mono, monospace"
           fontWeight={700}
@@ -434,7 +522,7 @@ export default function ICPackageSVG({
           x={cx}
           y={cy + 2}
           textAnchor="middle"
-          fill="#666"
+          fill="var(--text-muted)"
           fontSize={8}
           fontFamily="JetBrains Mono, monospace"
           letterSpacing={1}
@@ -445,16 +533,34 @@ export default function ICPackageSVG({
           x={cx}
           y={cy + 16}
           textAnchor="middle"
-          fill="#333"
+          fill="var(--text-faint)"
           fontSize={7}
           fontFamily="JetBrains Mono, monospace"
         >
           {packageType} · {pinCount}p
         </text>
 
+        {layout.type === "pga" && (
+          <text
+            x={cx}
+            y={cy + 30}
+            textAnchor="middle"
+            fill="var(--text-dim)"
+            fontSize={6}
+            fontFamily="JetBrains Mono, monospace"
+            letterSpacing={1}
+          >
+            BOTTOM VIEW
+          </text>
+        )}
+
         {/* Pins */}
         <g filter="url(#pinGlow)">
-          {layout.type === "dip" ? renderDIPPins() : renderPLCCPins()}
+          {layout.type === "dip"
+            ? renderDIPPins()
+            : layout.type === "pga"
+              ? renderPGAPins()
+              : renderQuadPins()}
         </g>
 
         {/* Corner registration marks */}
@@ -465,15 +571,11 @@ export default function ICPackageSVG({
           [chipX + chipW + 12, chipY + chipH + 12],
         ].map(([mx, my], idx) => (
           <g key={idx}>
-            <line x1={mx - 5} y1={my} x2={mx + 5} y2={my} stroke="#1e1e1e" strokeWidth={1} />
-            <line x1={mx} y1={my - 5} x2={mx} y2={my + 5} stroke="#1e1e1e" strokeWidth={1} />
+            <line x1={mx - 5} y1={my} x2={mx + 5} y2={my} stroke="var(--border-subtle)" strokeWidth={1} />
+            <line x1={mx} y1={my - 5} x2={mx} y2={my + 5} stroke="var(--border-subtle)" strokeWidth={1} />
           </g>
         ))}
       </svg>
     </div>
   );
 }
-
-// Need to add useState import
-import { useState } from "react"
-;

@@ -11,9 +11,7 @@ export const metadata: Metadata = {
   title: 'Next.js with Tailwind CSS',
   description: 'A boilerplate project with Next.js and Tailwind CSS',
   icons: {
-    icon: [
-      { url: '/assets/images/app_logo.png', type: 'image/x-icon' }
-    ],
+    icon: [{ url: '/assets/images/app_logo.png', type: 'image/x-icon' }],
   },
 };
 
@@ -23,11 +21,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var theme=localStorage.getItem('amiga-color-theme');document.documentElement.dataset.theme=theme==='light'?'light':'dark'}catch(e){document.documentElement.dataset.theme='dark'}`,
+          }}
+        />
+      </head>
+      <body>
+        {children}
 
-        <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Famigachipr7697back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.17" />
-        <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2" /></body>
+        <script
+          type="module"
+          async
+          src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Famigachipr7697back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.17"
+        />
+        <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2" />
+      </body>
     </html>
   );
 }

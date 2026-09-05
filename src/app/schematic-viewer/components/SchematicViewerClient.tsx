@@ -83,14 +83,14 @@ export default function SchematicViewerClient() {
   }, []);
 
   const getPackageColor = (pkg: string) => {
-    if (pkg.startsWith("PLCC84")) return "#7ECF7E";
-    if (pkg.startsWith("PLCC44")) return "#E8A000";
-    if (pkg.startsWith("PLCC52")) return "#FF6B35";
-    if (pkg.startsWith("PLCC68")) return "#a78bfa";
-    if (pkg.startsWith("PQFP") || pkg.startsWith("QFP")) return "#f472b6";
-    if (pkg.startsWith("PGA")) return "#c084fc";
-    if (pkg.startsWith("DIP")) return "#60a5fa";
-    return "#666";
+    if (pkg.startsWith("PLCC84")) return "var(--phosphor-green)";
+    if (pkg.startsWith("PLCC44")) return "var(--accent-amber)";
+    if (pkg.startsWith("PLCC52")) return "var(--accent-orange)";
+    if (pkg.startsWith("PLCC68")) return "var(--accent-purple)";
+    if (pkg.startsWith("PQFP") || pkg.startsWith("QFP")) return "var(--accent-magenta)";
+    if (pkg.startsWith("PGA")) return "var(--accent-violet)";
+    if (pkg.startsWith("DIP")) return "var(--accent-blue)";
+    return "var(--text-muted)";
   };
 
   return (
@@ -104,20 +104,20 @@ export default function SchematicViewerClient() {
         style={{
           width: sidebarOpen ? 240 : 0,
           minWidth: sidebarOpen ? 240 : 0,
-          background: "#0a0a0a",
-          borderColor: "#1e1e1e",
+          background: "var(--bg-secondary)",
+          borderColor: "var(--border-subtle)",
           overflow: "hidden",
           transition: "width 0.3s cubic-bezier(0.4,0,0.2,1), min-width 0.3s cubic-bezier(0.4,0,0.2,1)",
         }}
       >
         {/* Model selector */}
-        <div className="flex-shrink-0 border-b" style={{ borderColor: "#1e1e1e" }}>
+        <div className="flex-shrink-0 border-b" style={{ borderColor: "var(--border-subtle)" }}>
           <div
             className="px-4 py-2.5 flex items-center gap-2"
-            style={{ background: "#080808", borderBottom: "1px solid #1e1e1e" }}
+            style={{ background: "var(--bg-primary)", borderBottom: "1px solid var(--border-subtle)" }}
           >
-            <Icon name="ComputerDesktopIcon" size={12} style={{ color: "#E8A000" }} />
-            <span className="font-mono text-[10px] tracking-widest" style={{ color: "#E8A000" }}>
+            <Icon name="ComputerDesktopIcon" size={12} style={{ color: "var(--accent-amber)" }} />
+            <span className="font-mono text-[10px] tracking-widest" style={{ color: "var(--accent-amber)" }}>
               MODEL
             </span>
           </div>
@@ -128,13 +128,13 @@ export default function SchematicViewerClient() {
                 onClick={() => handleModelSelect(model)}
                 className="w-full text-left px-4 py-2 flex items-center gap-2 transition-all duration-150"
                 style={{
-                  background: selectedModel.id === model.id ? "#1a1200" : "transparent",
-                  borderLeft: selectedModel.id === model.id ? "2px solid #E8A000" : "2px solid transparent",
+                  background: selectedModel.id === model.id ? "var(--bg-active)" : "transparent",
+                  borderLeft: selectedModel.id === model.id ? "2px solid var(--accent-amber)" : "2px solid transparent",
                 }}
               >
                 <span
                   className="font-mono text-[11px] truncate"
-                  style={{ color: selectedModel.id === model.id ? "#E8A000" : "#555" }}
+                  style={{ color: selectedModel.id === model.id ? "var(--accent-amber)" : "var(--text-soft)" }}
                 >
                   {model.shortName}
                 </span>
@@ -144,13 +144,13 @@ export default function SchematicViewerClient() {
         </div>
 
         {/* Chip list */}
-        <div className="flex-shrink-0 border-b" style={{ borderColor: "#1e1e1e" }}>
+        <div className="flex-shrink-0 border-b" style={{ borderColor: "var(--border-subtle)" }}>
           <div
             className="px-4 py-2.5 flex items-center gap-2"
-            style={{ background: "#080808", borderBottom: "1px solid #1e1e1e" }}
+            style={{ background: "var(--bg-primary)", borderBottom: "1px solid var(--border-subtle)" }}
           >
-            <Icon name="CpuChipIcon" size={12} style={{ color: "#7ECF7E" }} />
-            <span className="font-mono text-[10px] tracking-widest" style={{ color: "#7ECF7E" }}>
+            <Icon name="CpuChipIcon" size={12} style={{ color: "var(--phosphor-green)" }} />
+            <span className="font-mono text-[10px] tracking-widest" style={{ color: "var(--phosphor-green)" }}>
               CHIPS
             </span>
           </div>
@@ -165,13 +165,13 @@ export default function SchematicViewerClient() {
                 onClick={() => handleChipSelect(chip)}
                 className="w-full text-left px-4 py-2.5 flex flex-col gap-0.5 transition-all duration-150"
                 style={{
-                  background: isActive ? "#0d1a0d" : "transparent",
+                  background: isActive ? "var(--bg-success)" : "transparent",
                   borderLeft: isActive ? `2px solid ${pkgColor}` : "2px solid transparent",
                 }}
               >
                 <span
                   className="font-mono text-[11px] font-medium"
-                  style={{ color: isActive ? "#AAFFAA" : "#7ECF7E" }}
+                  style={{ color: isActive ? "var(--phosphor-green-bright)" : "var(--phosphor-green)" }}
                 >
                   {chip.name} {chip.partNumber}
                 </span>
@@ -186,7 +186,7 @@ export default function SchematicViewerClient() {
                   >
                     {chip.package}
                   </span>
-                  <span className="font-mono text-[9px]" style={{ color: "#333" }}>
+                  <span className="font-mono text-[9px]" style={{ color: "var(--text-faint)" }}>
                     {chip.pinCount}p
                   </span>
                 </div>
@@ -196,11 +196,11 @@ export default function SchematicViewerClient() {
         </div>
 
         {/* Back to library link */}
-        <div className="flex-shrink-0 p-3 border-t" style={{ borderColor: "#1e1e1e" }}>
+        <div className="flex-shrink-0 p-3 border-t" style={{ borderColor: "var(--border-subtle)" }}>
           <Link
             href="/chip-library"
-            className="flex items-center gap-2 font-mono text-[10px] tracking-wide transition-colors hover:text-[#7ECF7E]"
-            style={{ color: "#444" }}
+            className="flex items-center gap-2 font-mono text-[10px] tracking-wide transition-colors"
+            style={{ color: "var(--text-dim)" }}
           >
             <Icon name="ArrowLeftIcon" size={11} />
             Back to Library
@@ -214,9 +214,9 @@ export default function SchematicViewerClient() {
         className="flex-shrink-0 flex items-center justify-center z-30 transition-all duration-200 hover:scale-110"
         style={{
           width: 18,
-          background: "#0d1a0d",
+          background: "var(--bg-success)",
           border: "none",
-          borderRight: "1px solid #3a7a3a",
+          borderRight: "1px solid var(--phosphor-green-dim)",
           cursor: "pointer",
         }}
         aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
@@ -224,7 +224,7 @@ export default function SchematicViewerClient() {
         <Icon
           name={sidebarOpen ? "ChevronLeftIcon" : "ChevronRightIcon"}
           size={12}
-          style={{ color: "#3a7a3a" }}
+          style={{ color: "var(--phosphor-green-dim)" }}
         />
       </button>
 
@@ -233,27 +233,27 @@ export default function SchematicViewerClient() {
         {/* Top bar */}
         <div
           className="flex-shrink-0 px-4 py-3 border-b flex items-center gap-4"
-          style={{ background: "#0d0d0d", borderColor: "#1e1e1e" }}
+          style={{ background: "var(--bg-elevated)", borderColor: "var(--border-subtle)" }}
         >
           <div className="flex flex-col gap-0.5">
             <div className="flex items-center gap-2">
-              <span className="font-mono font-bold text-sm" style={{ color: "#E8A000" }}>
+              <span className="font-mono font-bold text-sm" style={{ color: "var(--accent-amber)" }}>
                 {selectedChip?.name || "—"}
               </span>
-              <span className="font-mono text-xs" style={{ color: "#555" }}>
+              <span className="font-mono text-xs" style={{ color: "var(--text-soft)" }}>
                 {selectedChip?.partNumber}
               </span>
             </div>
             <div className="flex items-center gap-3">
-              <span className="font-mono text-[10px]" style={{ color: "#444" }}>
+              <span className="font-mono text-[10px]" style={{ color: "var(--text-dim)" }}>
                 {selectedModel.name}
               </span>
-              <span style={{ color: "#2a2a2a" }}>·</span>
-              <span className="font-mono text-[10px]" style={{ color: "#444" }}>
+              <span style={{ color: "var(--border-mid)" }}>·</span>
+              <span className="font-mono text-[10px]" style={{ color: "var(--text-dim)" }}>
                 {selectedChip?.package}
               </span>
-              <span style={{ color: "#2a2a2a" }}>·</span>
-              <span className="font-mono text-[10px]" style={{ color: "#444" }}>
+              <span style={{ color: "var(--border-mid)" }}>·</span>
+              <span className="font-mono text-[10px]" style={{ color: "var(--text-dim)" }}>
                 {selectedChip?.pinCount} PINS
               </span>
             </div>
@@ -262,17 +262,17 @@ export default function SchematicViewerClient() {
           {/* Pin legend */}
           <div className="flex items-center gap-3 ml-auto flex-wrap">
             {[
-              { label: "IN", color: "#7ECF7E" },
-              { label: "OUT", color: "#E8A000" },
-              { label: "BI", color: "#60a5fa" },
-              { label: "PWR", color: "#ff6b6b" },
-              { label: "GND", color: "#6b9bff" },
-              { label: "SIG", color: "#888" },
-              { label: "NC", color: "#555" },
+              { label: "IN", color: "var(--phosphor-green)" },
+              { label: "OUT", color: "var(--accent-amber)" },
+              { label: "BI", color: "var(--accent-blue)" },
+              { label: "PWR", color: "var(--accent-red)" },
+              { label: "GND", color: "var(--accent-ground)" },
+              { label: "SIG", color: "var(--text-secondary)" },
+              { label: "NC", color: "var(--text-soft)" },
             ].map((item) => (
               <div key={item.label} className="flex items-center gap-1">
                 <span className="w-2 h-2 rounded-sm" style={{ background: item.color }} />
-                <span className="font-mono text-[10px]" style={{ color: "#444" }}>
+                <span className="font-mono text-[10px]" style={{ color: "var(--text-dim)" }}>
                   {item.label}
                 </span>
               </div>
@@ -283,9 +283,9 @@ export default function SchematicViewerClient() {
           {selectedPin && (
             <div
               className="flex items-center gap-2 px-3 py-1.5 rounded"
-              style={{ background: "#1a1200", border: "1px solid #E8A00040" }}
+              style={{ background: "var(--bg-active)", border: "1px solid var(--accent-amber-alpha)" }}
             >
-              <span className="font-mono text-[10px]" style={{ color: "#E8A000" }}>
+              <span className="font-mono text-[10px]" style={{ color: "var(--accent-amber)" }}>
                 PIN {selectedPin.number}: {selectedPin.name}
               </span>
             </div>
@@ -306,7 +306,7 @@ export default function SchematicViewerClient() {
             />
           ) : (
             <div className="flex items-center justify-center h-full">
-              <p className="font-mono text-xs" style={{ color: "#333" }}>
+              <p className="font-mono text-xs" style={{ color: "var(--text-faint)" }}>
                 Select a chip from the sidebar
               </p>
             </div>
@@ -316,20 +316,20 @@ export default function SchematicViewerClient() {
           {selectedChip && !hasVerifiedPinout(selectedChip.id) ? (
             <div
               className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded flex items-center gap-2"
-              style={{ background: "rgba(26,18,0,0.95)", border: "1px solid #E8A00040" }}
+              style={{ background: "var(--notice-bg)", border: "1px solid var(--accent-amber-alpha)" }}
             >
-              <Icon name="ExclamationTriangleIcon" size={14} style={{ color: "#E8A000" }} />
-              <span className="font-mono text-[11px]" style={{ color: "#b27b00" }}>
+              <Icon name="ExclamationTriangleIcon" size={14} style={{ color: "var(--accent-amber)" }} />
+              <span className="font-mono text-[11px]" style={{ color: "var(--warning-text)" }}>
                 Package verified; package-specific pin table is not yet available
               </span>
             </div>
           ) : !selectedPin && (
             <div
               className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded flex items-center gap-2"
-              style={{ background: "rgba(8,8,8,0.9)", border: "1px solid #1e1e1e" }}
+              style={{ background: "var(--floating-bg)", border: "1px solid var(--border-subtle)" }}
             >
-              <Icon name="CursorArrowRaysIcon" size={14} style={{ color: "#444" }} />
-              <span className="font-mono text-[11px]" style={{ color: "#444" }}>
+              <Icon name="CursorArrowRaysIcon" size={14} style={{ color: "var(--text-dim)" }} />
+              <span className="font-mono text-[11px]" style={{ color: "var(--text-dim)" }}>
                 Click any pin to view signal reference
               </span>
             </div>
@@ -339,21 +339,21 @@ export default function SchematicViewerClient() {
         {/* Bottom status */}
         <div
           className="flex-shrink-0 px-4 py-1.5 border-t flex items-center gap-3"
-          style={{ background: "#080808", borderColor: "#1e1e1e" }}
+          style={{ background: "var(--bg-primary)", borderColor: "var(--border-subtle)" }}
         >
           <span
             className="w-1.5 h-1.5 rounded-full animate-status-pulse"
-            style={{ background: selectedChip && hasVerifiedPinout(selectedChip.id) ? "#7ECF7E" : "#E8A000" }}
+            style={{ background: selectedChip && hasVerifiedPinout(selectedChip.id) ? "var(--phosphor-green)" : "var(--accent-amber)" }}
           />
-          <span className="font-mono text-[10px]" style={{ color: "#333" }}>
+          <span className="font-mono text-[10px]" style={{ color: "var(--text-faint)" }}>
             {selectedChip && hasVerifiedPinout(selectedChip.id)
               ? `${pins.length} verified pins loaded`
               : "Pinout pending verification"}
           </span>
           {selectedPin && (
             <>
-              <span style={{ color: "#1e1e1e" }}>·</span>
-              <span className="font-mono text-[10px]" style={{ color: "#444" }}>
+              <span style={{ color: "var(--border-subtle)" }}>·</span>
+              <span className="font-mono text-[10px]" style={{ color: "var(--text-dim)" }}>
                 Selected: Pin {selectedPin.number} ({selectedPin.name})
               </span>
             </>
@@ -367,8 +367,8 @@ export default function SchematicViewerClient() {
         style={{
           width: viewerOpen ? 300 : 52,
           minWidth: viewerOpen ? 300 : 52,
-          background: "#0a0a0a",
-          borderColor: "#1e1e1e",
+          background: "var(--bg-secondary)",
+          borderColor: "var(--border-subtle)",
           overflow: "hidden",
           transition: "width 0.3s cubic-bezier(0.4,0,0.2,1), min-width 0.3s cubic-bezier(0.4,0,0.2,1)",
         }}
@@ -386,19 +386,19 @@ export default function SchematicViewerClient() {
           /* Collapsed viewer tab */
           <button
             onClick={() => setViewerOpen(true)}
-            className="flex flex-col items-center justify-center h-full gap-3 transition-all duration-200 hover:bg-[#0d0d0d] w-full"
+            className="theme-hover-surface flex flex-col items-center justify-center h-full gap-3 transition-all duration-200 w-full"
             style={{ cursor: selectedPin ? "pointer" : "default" }}
             disabled={!selectedPin}
           >
             <Icon
               name="SignalIcon"
               size={16}
-              style={{ color: selectedPin ? "#E8A000" : "#333" }}
+              style={{ color: selectedPin ? "var(--accent-amber)" : "var(--text-faint)" }}
             />
             <div
               className="font-mono text-[10px] tracking-widest"
               style={{
-                color: selectedPin ? "#555" : "#2a2a2a",
+                color: selectedPin ? "var(--text-soft)" : "var(--border-mid)",
                 writingMode: "vertical-rl",
                 textOrientation: "mixed",
                 transform: "rotate(180deg)",
