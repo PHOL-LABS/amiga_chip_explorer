@@ -23,14 +23,14 @@ export const AMIGA_MODELS: AmigaModel[] = [
     shortName: "A1200",
     year: "1992",
     chips: [
-      { id: "budgie", name: "Budgie", partNumber: "391425-02", package: "PLCC84", pinCount: 84, description: "Video/Audio controller", function: "AGA chipset video controller" },
-      { id: "gayle", name: "Gayle", partNumber: "391424-01", package: "PLCC84", pinCount: 84, description: "IDE/PCMCIA controller", function: "I/O and storage controller" },
+      { id: "budgie", name: "Budgie", partNumber: "391425-02", package: "PQFP128", pinCount: 128, description: "Memory/expansion bus controller", function: "AGA memory and expansion controller" },
+      { id: "gayle", name: "Gayle", partNumber: "391424-02", package: "PLCC84", pinCount: 84, description: "IDE/PCMCIA controller", function: "I/O and storage controller" },
       { id: "lisa", name: "Lisa", partNumber: "391227-01", package: "PLCC84", pinCount: 84, description: "AGA display controller", function: "Advanced graphics architecture" },
       { id: "paula", name: "Paula", partNumber: "391077-01", package: "PLCC52", pinCount: 52, description: "Audio/Serial/Disk controller", function: "Sound and I/O" },
       { id: "alice", name: "Alice", partNumber: "391010-01", package: "PLCC84", pinCount: 84, description: "AGA DMA controller", function: "Memory and DMA controller" },
       { id: "cia_u7", name: "CIA U7", partNumber: "391078-02 U7", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter A", function: "Parallel, serial, timers" },
       { id: "cia_u8", name: "CIA U8", partNumber: "391078-02 U8", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter B", function: "Disk, joystick, timers" },
-      { id: "cpu", name: "CPU", partNumber: "MC68EC020", package: "PLCC68", pinCount: 68, description: "Motorola 68EC020 CPU", function: "32-bit processor @ 14.3 MHz" },
+      { id: "cpu", name: "CPU", partNumber: "MC68EC020FG16", package: "PQFP100", pinCount: 100, description: "Motorola 68EC020 CPU", function: "32-bit processor @ 14.3 MHz" },
     ],
   },
   {
@@ -39,13 +39,13 @@ export const AMIGA_MODELS: AmigaModel[] = [
     shortName: "A600",
     year: "1992",
     chips: [
-      { id: "gayle_a6", name: "Gayle", partNumber: "391424-01", package: "PLCC84", pinCount: 84, description: "IDE/PCMCIA controller", function: "I/O and storage controller" },
+      { id: "gayle_a6", name: "Gayle", partNumber: "391155-01", package: "PLCC84", pinCount: 84, description: "IDE/PCMCIA controller", function: "I/O and storage controller" },
       { id: "paula_a6", name: "Paula", partNumber: "391077-01", package: "PLCC52", pinCount: 52, description: "Audio/Serial/Disk controller", function: "Sound and I/O" },
-      { id: "agnus_a6", name: "Fat Agnus", partNumber: "391025-01", package: "PLCC84", pinCount: 84, description: "Chip RAM DMA controller", function: "1MB chip RAM DMA" },
-      { id: "denise_a6", name: "Denise", partNumber: "391054-01", package: "PLCC48", pinCount: 48, description: "Display controller", function: "ECS display chip" },
-      { id: "cia_u6", name: "CIA U6", partNumber: "391078-02 U6", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter A", function: "Parallel, serial, timers" },
-      { id: "cia_u7_a6", name: "CIA U7", partNumber: "391078-02 U7", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter B", function: "Disk, joystick, timers" },
-      { id: "cpu_a6", name: "CPU", partNumber: "MC68000", package: "DIP64", pinCount: 64, description: "Motorola 68000 CPU", function: "16/32-bit processor @ 7.16 MHz" },
+      { id: "agnus_a6", name: "Fat Agnus", partNumber: "390544-01", package: "PLCC84", pinCount: 84, description: "8375 ECS DMA controller", function: "2MB chip RAM DMA" },
+      { id: "denise_a6", name: "Super Denise", partNumber: "391081-01", package: "PLCC52", pinCount: 52, description: "ECS display controller", function: "ECS display chip" },
+      { id: "cia_u6", name: "CIA U7", partNumber: "391078-01 U7", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter A", function: "Parallel, serial, timers" },
+      { id: "cia_u7_a6", name: "CIA U8", partNumber: "391078-01 U8", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter B", function: "Disk, joystick, timers" },
+      { id: "cpu_a6", name: "CPU", partNumber: "MC68000FN8", package: "PLCC68", pinCount: 68, description: "Motorola 68000 CPU", function: "16/32-bit processor @ 7.16 MHz" },
     ],
   },
   {
@@ -54,13 +54,13 @@ export const AMIGA_MODELS: AmigaModel[] = [
     shortName: "A500",
     year: "1987",
     chips: [
-      { id: "agnus_a5", name: "Agnus", partNumber: "318069-10", package: "DIP84", pinCount: 84, description: "DMA controller", function: "512KB chip RAM DMA" },
-      { id: "denise_a5", name: "Denise", partNumber: "318018-06", package: "DIP48", pinCount: 48, description: "Display controller", function: "OCS display chip" },
-      { id: "paula_a5", name: "Paula", partNumber: "318004-04", package: "DIP48", pinCount: 48, description: "Audio/Serial/Disk", function: "Sound and I/O controller" },
-      { id: "cia_a_a5", name: "CIA-A", partNumber: "391078-01 U9", package: "DIP40", pinCount: 40, description: "Complex Interface Adapter A", function: "Parallel, serial, timers" },
-      { id: "cia_b_a5", name: "CIA-B", partNumber: "391078-01 U10", package: "DIP40", pinCount: 40, description: "Complex Interface Adapter B", function: "Disk, joystick, timers" },
+      { id: "agnus_a5", name: "Fat Agnus", partNumber: "318069-10", package: "PLCC84", pinCount: 84, description: "8375 ECS DMA controller", function: "2MB chip RAM DMA" },
+      { id: "denise_a5", name: "Denise", partNumber: "252126-02", package: "DIP48", pinCount: 48, description: "Display controller", function: "OCS display chip" },
+      { id: "paula_a5", name: "Paula", partNumber: "252127-02", package: "DIP48", pinCount: 48, description: "Audio/Serial/Disk", function: "Sound and I/O controller" },
+      { id: "cia_a_a5", name: "CIA-A", partNumber: "318029-02 U7", package: "DIP40", pinCount: 40, description: "Complex Interface Adapter A", function: "Parallel, serial, timers" },
+      { id: "cia_b_a5", name: "CIA-B", partNumber: "318029-02 U8", package: "DIP40", pinCount: 40, description: "Complex Interface Adapter B", function: "Disk, joystick, timers" },
       { id: "cpu_a5", name: "CPU", partNumber: "MC68000", package: "DIP64", pinCount: 64, description: "Motorola 68000 CPU", function: "16/32-bit @ 7.16 MHz" },
-      { id: "gary_a5", name: "Gary", partNumber: "391008-01", package: "DIP48", pinCount: 48, description: "Address decode / bus control", function: "Bus arbitration chip" },
+      { id: "gary_a5", name: "Gary", partNumber: "318072-01", package: "DIP48", pinCount: 48, description: "Address decode / bus control", function: "System bus control" },
     ],
   },
   {
@@ -69,13 +69,14 @@ export const AMIGA_MODELS: AmigaModel[] = [
     shortName: "A2000",
     year: "1987",
     chips: [
-      { id: "agnus_a2", name: "Fat Agnus", partNumber: "318069-02", package: "DIP84", pinCount: 84, description: "ECS DMA controller", function: "1MB chip RAM DMA" },
-      { id: "denise_a2", name: "Denise", partNumber: "318018-06", package: "DIP48", pinCount: 48, description: "Display controller", function: "OCS display chip" },
-      { id: "paula_a2", name: "Paula", partNumber: "318004-04", package: "DIP48", pinCount: 48, description: "Audio/Serial/Disk", function: "Sound and I/O" },
-      { id: "cia_a_a2", name: "CIA-A", partNumber: "391078-01 U9", package: "DIP40", pinCount: 40, description: "Complex Interface Adapter A", function: "Parallel, serial, timers" },
-      { id: "cia_b_a2", name: "CIA-B", partNumber: "391078-01 U10", package: "DIP40", pinCount: 40, description: "Complex Interface Adapter B", function: "Disk, joystick, timers" },
+      { id: "agnus_a2", name: "Fat Agnus", partNumber: "318069-02", package: "PLCC84", pinCount: 84, description: "8372 ECS DMA controller", function: "1MB chip RAM DMA" },
+      { id: "denise_a2", name: "Denise", partNumber: "252126-01", package: "DIP48", pinCount: 48, description: "Display controller", function: "OCS display chip" },
+      { id: "paula_a2", name: "Paula", partNumber: "252127-01", package: "DIP48", pinCount: 48, description: "Audio/Serial/Disk", function: "Sound and I/O" },
+      { id: "cia_a_a2", name: "CIA-A", partNumber: "318029-02 U9", package: "DIP40", pinCount: 40, description: "Complex Interface Adapter A", function: "Parallel, serial, timers" },
+      { id: "cia_b_a2", name: "CIA-B", partNumber: "318029-02 U10", package: "DIP40", pinCount: 40, description: "Complex Interface Adapter B", function: "Disk, joystick, timers" },
       { id: "cpu_a2", name: "CPU", partNumber: "MC68000", package: "DIP64", pinCount: 64, description: "Motorola 68000 CPU", function: "16/32-bit @ 7.16 MHz" },
-      { id: "buster_a2", name: "Buster", partNumber: "390544-01", package: "DIP48", pinCount: 48, description: "Zorro II bus controller", function: "Expansion bus arbiter" },
+      { id: "gary_a2", name: "Gary", partNumber: "318072-01", package: "DIP48", pinCount: 48, description: "Address decode / bus control", function: "System bus control" },
+      { id: "buster_a2", name: "Buster", partNumber: "318075-01", package: "DIP48", pinCount: 48, description: "Zorro II bus controller", function: "Expansion bus arbiter" },
     ],
   },
   {
@@ -84,12 +85,11 @@ export const AMIGA_MODELS: AmigaModel[] = [
     shortName: "CD32",
     year: "1993",
     chips: [
-      { id: "akiko_cd", name: "Akiko", partNumber: "391563-01", package: "PLCC84", pinCount: 84, description: "CD32 custom chip", function: "CD-ROM + chunky-to-planar" },
+      { id: "akiko_cd", name: "Akiko", partNumber: "391563-01", package: "PQFP160", pinCount: 160, description: "CD32 custom chip", function: "CD-ROM + chunky-to-planar" },
       { id: "alice_cd", name: "Alice", partNumber: "391010-01", package: "PLCC84", pinCount: 84, description: "AGA DMA controller", function: "Memory and DMA" },
       { id: "lisa_cd", name: "Lisa", partNumber: "391227-01", package: "PLCC84", pinCount: 84, description: "AGA display controller", function: "Advanced graphics" },
       { id: "paula_cd", name: "Paula", partNumber: "391077-01", package: "PLCC52", pinCount: 52, description: "Audio/Serial/Disk", function: "Sound and I/O" },
-      { id: "cia_cd", name: "CIA", partNumber: "391078-02", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter", function: "I/O and timers" },
-      { id: "cpu_cd", name: "CPU", partNumber: "MC68EC020", package: "PLCC68", pinCount: 68, description: "Motorola 68EC020", function: "32-bit @ 14.3 MHz" },
+      { id: "cpu_cd", name: "CPU", partNumber: "MC68EC020FG16", package: "PQFP100", pinCount: 100, description: "Motorola 68EC020", function: "32-bit @ 14.3 MHz" },
     ],
   },
   {
@@ -98,13 +98,15 @@ export const AMIGA_MODELS: AmigaModel[] = [
     shortName: "A3000",
     year: "1990",
     chips: [
-      { id: "super_agnus_a3", name: "Super Agnus", partNumber: "391025-01", package: "PLCC84", pinCount: 84, description: "ECS DMA controller", function: "2MB chip RAM DMA" },
-      { id: "super_denise_a3", name: "Super Denise", partNumber: "391054-01", package: "PLCC48", pinCount: 48, description: "ECS display controller", function: "Productivity modes" },
-      { id: "paula_a3", name: "Paula", partNumber: "391077-01", package: "PLCC52", pinCount: 52, description: "Audio/Serial/Disk", function: "Sound and I/O" },
-      { id: "ramsey_a3", name: "Ramsey", partNumber: "390544-04", package: "PLCC84", pinCount: 84, description: "RAM controller", function: "DRAM/ZIPP memory arbiter" },
-      { id: "buster_a3", name: "Buster", partNumber: "390544-01", package: "PLCC84", pinCount: 84, description: "Zorro III bus controller", function: "Expansion bus arbiter" },
-      { id: "cia_a3", name: "CIA", partNumber: "391078-02", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter", function: "I/O and timers" },
-      { id: "cpu_a3", name: "CPU", partNumber: "MC68030", package: "PGA128", pinCount: 128, description: "Motorola 68030", function: "32-bit @ 25/40 MHz" },
+      { id: "super_agnus_a3", name: "Super Agnus", partNumber: "318069-03", package: "PLCC84", pinCount: 84, description: "8372AB ECS DMA controller", function: "2MB chip RAM DMA" },
+      { id: "super_denise_a3", name: "Super Denise", partNumber: "390433-01", package: "DIP48", pinCount: 48, description: "ECS display controller", function: "Productivity modes" },
+      { id: "paula_a3", name: "Paula", partNumber: "252127-01", package: "DIP48", pinCount: 48, description: "Audio/Serial/Disk", function: "Sound and I/O" },
+      { id: "ramsey_a3", name: "Ramsey", partNumber: "390541-04", package: "PLCC84", pinCount: 84, description: "RAM controller", function: "DRAM/ZIPP memory arbiter" },
+      { id: "buster_a3", name: "Super Buster", partNumber: "390539-02", package: "PLCC84", pinCount: 84, description: "Zorro III bus controller", function: "Expansion bus arbiter" },
+      { id: "fat_gary_a3", name: "Fat Gary", partNumber: "390540-02", package: "PLCC84", pinCount: 84, description: "System controller", function: "Address decode and bus control" },
+      { id: "cia_a3", name: "CIA-A", partNumber: "318029-02 U300", package: "DIP40", pinCount: 40, description: "Complex Interface Adapter A", function: "Parallel, serial, timers" },
+      { id: "cia_b_a3", name: "CIA-B", partNumber: "318029-02 U350", package: "DIP40", pinCount: 40, description: "Complex Interface Adapter B", function: "Disk, joystick, timers" },
+      { id: "cpu_a3", name: "CPU", partNumber: "MC68030", package: "QFP132", pinCount: 132, description: "Motorola 68030", function: "32-bit @ 25/40 MHz" },
     ],
   },
   {
@@ -116,9 +118,12 @@ export const AMIGA_MODELS: AmigaModel[] = [
       { id: "alice_a4", name: "Alice", partNumber: "391010-01", package: "PLCC84", pinCount: 84, description: "AGA DMA controller", function: "Memory and DMA" },
       { id: "lisa_a4", name: "Lisa", partNumber: "391227-01", package: "PLCC84", pinCount: 84, description: "AGA display controller", function: "Advanced graphics" },
       { id: "paula_a4", name: "Paula", partNumber: "391077-01", package: "PLCC52", pinCount: 52, description: "Audio/Serial/Disk", function: "Sound and I/O" },
-      { id: "ramsey_a4", name: "Ramsey", partNumber: "390544-04", package: "PLCC84", pinCount: 84, description: "RAM controller", function: "DRAM memory arbiter" },
-      { id: "gayle_a4", name: "Gayle", partNumber: "391424-01", package: "PLCC84", pinCount: 84, description: "IDE/PCMCIA controller", function: "I/O and storage" },
-      { id: "cia_a4", name: "CIA", partNumber: "391078-02", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter", function: "I/O and timers" },
+      { id: "ramsey_a4", name: "Ramsey", partNumber: "390541-07", package: "PLCC84", pinCount: 84, description: "RAM controller", function: "DRAM memory arbiter" },
+      { id: "fat_gary_a4", name: "Fat Gary", partNumber: "390540-02", package: "PLCC84", pinCount: 84, description: "System controller", function: "Address decode and bus control" },
+      { id: "buster_a4", name: "Super Buster", partNumber: "390539-09", package: "PLCC84", pinCount: 84, description: "Zorro III bus controller", function: "Expansion bus arbiter" },
+      { id: "bridgette_a4", name: "Bridgette", partNumber: "391380-01", package: "PQFP100", pinCount: 100, description: "A4000 custom system ASIC", function: "Bus and peripheral glue logic" },
+      { id: "cia_a_a4", name: "CIA-A", partNumber: "391078-02 U300", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter A", function: "Parallel, serial, timers" },
+      { id: "cia_b_a4", name: "CIA-B", partNumber: "391078-02 U350", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter B", function: "Disk, joystick, timers" },
       { id: "cpu_a4", name: "CPU", partNumber: "MC68040", package: "PGA179", pinCount: 179, description: "Motorola 68040", function: "32-bit @ 25/40 MHz" },
     ],
   },
@@ -128,11 +133,13 @@ export const AMIGA_MODELS: AmigaModel[] = [
     shortName: "CDTV",
     year: "1991",
     chips: [
-      { id: "fat_agnus_cdtv", name: "Fat Agnus", partNumber: "391025-01", package: "PLCC84", pinCount: 84, description: "ECS DMA controller", function: "1MB chip RAM DMA" },
-      { id: "super_denise_cdtv", name: "Super Denise", partNumber: "391054-01", package: "PLCC48", pinCount: 48, description: "ECS display controller", function: "Productivity display" },
-      { id: "paula_cdtv", name: "Paula", partNumber: "391077-01", package: "PLCC52", pinCount: 52, description: "Audio/Serial/Disk", function: "Sound and I/O" },
-      { id: "dmac_cdtv", name: "DMAC", partNumber: "390537-04", package: "PLCC84", pinCount: 84, description: "DMA controller", function: "SCSI + CD-ROM DMA" },
-      { id: "cia_cdtv", name: "CIA", partNumber: "391078-02", package: "PLCC44", pinCount: 44, description: "Complex Interface Adapter", function: "I/O and timers" },
+      { id: "fat_agnus_cdtv", name: "Fat Agnus", partNumber: "318069-02", package: "PLCC84", pinCount: 84, description: "8372 ECS DMA controller", function: "1MB chip RAM DMA" },
+      { id: "super_denise_cdtv", name: "Denise", partNumber: "252126-02", package: "DIP48", pinCount: 48, description: "OCS display controller", function: "Display output" },
+      { id: "paula_cdtv", name: "Paula", partNumber: "252127-02", package: "DIP48", pinCount: 48, description: "Audio/Serial/Disk", function: "Sound and I/O" },
+      { id: "dmac_cdtv", name: "DMAC", partNumber: "390563-02", package: "PLCC84", pinCount: 84, description: "DMA controller", function: "SCSI + CD-ROM DMA" },
+      { id: "gary_cdtv", name: "Gary", partNumber: "318072-01", package: "DIP48", pinCount: 48, description: "Address decode / bus control", function: "System bus control" },
+      { id: "cia_cdtv", name: "CIA-A", partNumber: "318029-03 U9", package: "DIP40", pinCount: 40, description: "Complex Interface Adapter A", function: "Parallel, serial, timers" },
+      { id: "cia_b_cdtv", name: "CIA-B", partNumber: "318029-03 U10", package: "DIP40", pinCount: 40, description: "Complex Interface Adapter B", function: "Disk, joystick, timers" },
       { id: "cpu_cdtv", name: "CPU", partNumber: "MC68000", package: "DIP64", pinCount: 64, description: "Motorola 68000 CPU", function: "16/32-bit @ 7.16 MHz" },
     ],
   },
@@ -143,171 +150,140 @@ export interface PinData {
   number: number;
   name: string;
   signal: string;
-  direction: "IN" | "OUT" | "BI" | "PWR" | "GND";
+  direction: "IN" | "OUT" | "BI" | "PWR" | "GND" | "NC" | "UNKNOWN";
   description: string;
 }
 
+export const PINOUT_PROFILES = {
+  mc68000_dip64: [
+    "D4", "D3", "D2", "D1", "D0", "/AS", "/UDS", "/LDS", "R/W", "/DTACK", "/BG", "/BGACK", "/BR", "VCC", "CLK", "GND",
+    "/HALT", "/RESET", "/VMA", "E", "/VPA", "/BERR", "/IPL2", "/IPL1", "/IPL0", "FC2", "FC1", "FC0", "A1", "A2", "A3", "A4",
+    "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20",
+    "VCC", "A21", "A22", "A23", "GND", "D15", "D14", "D13", "D12", "D11", "D10", "D9", "D8", "D7", "D6", "D5",
+  ],
+  agnus_8361_8367_dip48: [
+    "D8", "D7", "D6", "D5", "D4", "D3", "D2", "D1", "D0", "VCC", "/RES", "/INT3", "DMAL", "/BLS", "/DBR", "/ARW",
+    "RGA8", "RGA7", "RGA6", "RGA5", "RGA4", "RGA3", "RGA2", "RGA1", "CCK", "CCKQ", "GND", "DRA0", "DRA1", "DRA2", "DRA3", "DRA4",
+    "DRA5", "DRA6", "DRA7", "DRA8", "/LP", "/VSY", "/CSY", "/HSY", "GND", "D15", "D14", "D13", "D12", "D11", "D10", "D9",
+  ],
+  agnus_8370_8371_plcc84: [
+    "RD13", "RD12", "RD11", "RD10", "RD9", "RD8", "RD7", "RD6", "RD5", "RD4", "RD3", "RD2", "RD1", "RD0", "VCC", "/RESET",
+    "/INT3", "DMAL", "/BLS", "/DBR", "RRW", "PRW", "/RGEN", "/AS", "/RAMEN", "RGA8", "RGA7", "RGA6", "RGA5", "RGA4", "RGA3", "RGA2",
+    "RGA1", "28MHz", "XCLK", "/XCLKEN", "/CDAC", "7MHz", "CCKQ", "CCK", "TEST", "GND", "MA0", "MA1", "MA2", "MA3", "MA4", "MA5",
+    "MA6", "MA7", "MA8", "/LDS", "/UDS", "/CASL", "/CASU", "/RAS1", "/RAS0", "GND", "A19", "A1", "A2", "A3", "A4", "A5",
+    "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "/LP", "/VSYNC", "/CSYNC", "/HSYNC", "GND", "RD15", "RD14",
+  ],
+  agnus_8372_plcc84: [
+    "DRD13", "DRD12", "DRD11", "DRD10", "DRD9", "DRD8", "DRD7", "DRD6", "DRD5", "DRD4", "DRD3", "DRD2", "DRD1", "DRD0", "VCC", "/RESET",
+    "/INTR", "DMAL", "/BLISS", "/BLIT", "/WE", "R/W", "/REGEN", "/AS", "/RAMEN", "RGA8", "RGA7", "RGA6", "RGA5", "RGA4", "RGA3", "RGA2",
+    "RGA1", "28MHz", "A20", "/XCLKEN", "/CDAC", "7MHz", "CCKQ", "CCK", "TEST", "GND", "DRA0", "DRA1", "DRA2", "DRA3", "DRA4", "DRA5",
+    "DRA6", "DRA7", "DRA8", "/LDS", "/UDS", "/CASL", "/CASU", "DRA9", "/RAS", "GND", "A19", "A1", "A2", "A3", "A4", "A5",
+    "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "/LPEN", "/VSYNC", "/CSYNC", "/HSYNC", "GND", "DRD15", "DRD14",
+  ],
+  agnus_8375_plcc84: [
+    "DRD13", "DRD12", "DRD11", "DRD10", "DRD9", "DRD8", "DRD7", "DRD6", "DRD5", "DRD4", "DRD3", "DRD2", "DRD1", "DRD0", "VCC", "/RESET",
+    "/INTR", "DMAL", "/BLISS", "/BLIT", "/WE", "R/W", "/REGEN", "/AS", "/RAMEN", "RGA8", "RGA7", "RGA6", "RGA5", "RGA4", "RGA3", "RGA2",
+    "RGA1", "28MHz", "A20", "/CDAC", "7MHz", "CCKQ", "CCK", "14MHz", "GND", "DRA0", "DRA1", "DRA2", "DRA3", "DRA4", "DRA5", "DRA6",
+    "DRA7", "DRA8", "/LDS", "/UDS", "/CASL", "/CASU", "DRA9", "/RAS1", "/RAS0", "GND", "A19", "A1", "A2", "A3", "A4", "A5",
+    "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "/LPEN", "/VSYNC", "/CSYNC", "/HSYNC", "GND", "DRD15", "DRD14",
+  ],
+  alice_8374_plcc84: [
+    "DRD13", "DRD12", "DRD11", "DRD10", "DRD9", "DRD8", "DRD7", "DRD6", "DRD5", "DRD4", "DRD3", "DRD2", "DRD1", "DRD0", "VCC1", "/RESET",
+    "/INTR", "DMAL", "/BLS", "/DBR", "/WE", "R/W", "/REGEN", "NC2", "/RAMEN", "RGA8", "RGA7", "RGA6", "RGA5", "RGA4", "RGA3", "RGA2",
+    "RGA1", "SCLK", "A20", "14MHz", "/CDAC", "7MHz", "CCKQ", "CCK", "/NTSC", "GND2", "DRA0", "DRA1", "DRA2", "DRA3", "DRA4", "DRA5",
+    "DRA6", "DRA7", "DRA8", "VCC2", "NC1", "/CAS", "VBB", "DRA9", "/RAS", "GND3", "A19", "A1", "A2", "A3", "A4", "A5",
+    "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "/LPEN", "/VSYNC", "/CSYNC", "/HSYNC", "GND1", "DRD15", "DRD14",
+  ],
+  denise_8362_dip48: [
+    "D6", "D5", "D4", "D3", "D2", "D1", "D0", "M1H", "M0H", "RGA8", "RGA7", "RGA6", "RGA5", "RGA4", "RGA3", "RGA2",
+    "RGA1", "/BURST", "VCC", "R0", "R1", "R2", "R3", "B0", "B1", "B2", "B3", "G0", "G1", "G2", "G3", "/CSYNC",
+    "/ZD", "NC", "7M", "CCK", "GND", "M0V", "M1V", "D15", "D14", "D13", "D12", "D11", "D10", "D9", "D8", "D7",
+  ],
+  denise_8373_dip48: [
+    "D6", "D5", "D4", "D3", "D2", "D1", "D0", "M1H", "M0H", "RGA8", "RGA7", "RGA6", "RGA5", "RGA4", "RGA3", "RGA2",
+    "RGA1", "/BURST", "VCC", "R0", "R1", "R2", "R3", "B0", "B1", "B2", "B3", "G0", "G1", "G2", "G3", "/CSYNC",
+    "/ZD", "CDAC", "7M", "CCK", "GND", "M0V", "M1V", "D15", "D14", "D13", "D12", "D11", "D10", "D9", "D8", "D7",
+  ],
+  paula_8364_dip48: [
+    "D8", "D7", "D6", "D5", "D4", "D3", "D2", "GND", "D1", "D0", "/RES", "DMAL", "/IPL0", "/IPL1", "/IPL2", "/INT2",
+    "/INT3", "/INT6", "RGA8", "RGA7", "RGA6", "RGA5", "RGA4", "RGA3", "RGA2", "RGA1", "VCC", "CCK", "CCKQ", "AUDB", "AUDA", "POT0X",
+    "POT0Y", "VSSANA", "POT1X", "POT1Y", "/DKRD", "/DKWD", "DKWE", "TXD", "RXD", "D15", "D14", "D13", "D12", "D11", "D10", "D9",
+  ],
+  lisa_4203_plcc84: [
+    "VSS0", "D6", "D5", "D4", "D3", "D2", "D1", "D0", "/CAS", "CCK", "WIDE", "RGA8", "RGA7", "RGA6", "RGA5", "RGA4",
+    "RGA3", "RGA2", "RGA1", "MDAT", "/MLD", "SCLK", "C14O", "/RST", "C28M", "SOG", "BLANK", "ZD", "B0", "VDD0", "B1", "B2",
+    "VSS1", "B3", "B4", "B5", "B6", "B7", "G0", "G1", "G2", "G3", "C28OUT", "G4", "G5", "G6", "G7", "R0",
+    "R1", "R2", "R3", "R4", "VSS2", "R5", "R6", "VDD1", "R7", "/BURST", "D31", "D30", "D29", "D28", "D27", "D26",
+    "D25", "D24", "D23", "D22", "D21", "D20", "D19", "D18", "D17", "D16", "D15", "D14", "D13", "D12", "D11", "D10", "D9", "D8", "VDD2", "D7",
+  ],
+  cia_8520_dip40: [
+    "GND", "PA0", "PA1", "PA2", "PA3", "PA4", "PA5", "PA6", "PA7", "PB0", "PB1", "PB2", "PB3", "PB4", "PB5", "PB6",
+    "PB7", "PC", "TOD", "VCC", "/IRQ", "R/W", "/CS", "/FLAG", "PHI2", "DB7", "DB6", "DB5", "DB4", "DB3", "DB2", "DB1",
+    "DB0", "/RES", "RS3", "RS2", "RS1", "RS0", "SP", "CNT",
+  ],
+} as const satisfies Record<string, readonly string[]>;
+
+export type PinoutProfile = keyof typeof PINOUT_PROFILES;
+
+const CHIP_PINOUT_PROFILES: Record<string, PinoutProfile> = {
+  cpu_a5: "mc68000_dip64",
+  cpu_a2: "mc68000_dip64",
+  cpu_cdtv: "mc68000_dip64",
+  agnus_a5: "agnus_8375_plcc84",
+  agnus_a6: "agnus_8375_plcc84",
+  agnus_a2: "agnus_8372_plcc84",
+  super_agnus_a3: "agnus_8372_plcc84",
+  fat_agnus_cdtv: "agnus_8372_plcc84",
+  alice: "alice_8374_plcc84",
+  alice_cd: "alice_8374_plcc84",
+  alice_a4: "alice_8374_plcc84",
+  denise_a5: "denise_8362_dip48",
+  denise_a2: "denise_8362_dip48",
+  super_denise_cdtv: "denise_8362_dip48",
+  super_denise_a3: "denise_8373_dip48",
+  paula_a5: "paula_8364_dip48",
+  paula_a2: "paula_8364_dip48",
+  paula_a3: "paula_8364_dip48",
+  paula_cdtv: "paula_8364_dip48",
+  lisa: "lisa_4203_plcc84",
+  lisa_cd: "lisa_4203_plcc84",
+  lisa_a4: "lisa_4203_plcc84",
+  cia_a_a5: "cia_8520_dip40",
+  cia_b_a5: "cia_8520_dip40",
+  cia_a_a2: "cia_8520_dip40",
+  cia_b_a2: "cia_8520_dip40",
+  cia_a3: "cia_8520_dip40",
+  cia_b_a3: "cia_8520_dip40",
+  cia_cdtv: "cia_8520_dip40",
+  cia_b_cdtv: "cia_8520_dip40",
+};
+
+export function hasVerifiedPinout(chipId: string): boolean {
+  return chipId in CHIP_PINOUT_PROFILES;
+}
+
 export function getPinsForChip(chipId: string): PinData[] {
-  // CIA PLCC44 pins
-  if (chipId.startsWith("cia")) {
-    return [
-      { number: 1, name: "VSS", signal: "GND", direction: "GND", description: "Ground" },
-      { number: 2, name: "PA0", signal: "PA0", direction: "BI", description: "Port A bit 0" },
-      { number: 3, name: "PA1", signal: "PA1", direction: "BI", description: "Port A bit 1" },
-      { number: 4, name: "PA2", signal: "PA2", direction: "BI", description: "Port A bit 2" },
-      { number: 5, name: "PA3", signal: "PA3", direction: "BI", description: "Port A bit 3" },
-      { number: 6, name: "PA4", signal: "PA4", direction: "BI", description: "Port A bit 4" },
-      { number: 7, name: "PA5", signal: "PA5", direction: "BI", description: "Port A bit 5" },
-      { number: 8, name: "PA6", signal: "PA6", direction: "BI", description: "Port A bit 6" },
-      { number: 9, name: "PA7", signal: "PA7", direction: "BI", description: "Port A bit 7" },
-      { number: 10, name: "PB0", signal: "PB0", direction: "BI", description: "Port B bit 0" },
-      { number: 11, name: "PB1", signal: "PB1", direction: "BI", description: "Port B bit 1" },
-      { number: 12, name: "PB2", signal: "PB2", direction: "BI", description: "Port B bit 2" },
-      { number: 13, name: "PB3", signal: "PB3", direction: "BI", description: "Port B bit 3" },
-      { number: 14, name: "PB4", signal: "PB4", direction: "BI", description: "Port B bit 4" },
-      { number: 15, name: "PB5", signal: "PB5", direction: "BI", description: "Port B bit 5" },
-      { number: 16, name: "PB6", signal: "PB6", direction: "BI", description: "Port B bit 6" },
-      { number: 17, name: "PB7", signal: "PB7", direction: "BI", description: "Port B bit 7" },
-      { number: 18, name: "VCC", signal: "VCC", direction: "PWR", description: "+5V power supply" },
-      { number: 19, name: "D0", signal: "D0", direction: "BI", description: "Data bus bit 0" },
-      { number: 20, name: "D1", signal: "D1", direction: "BI", description: "Data bus bit 1" },
-      { number: 21, name: "D2", signal: "D2", direction: "BI", description: "Data bus bit 2" },
-      { number: 22, name: "D3", signal: "D3", direction: "BI", description: "Data bus bit 3" },
-      { number: 23, name: "D4", signal: "D4", direction: "BI", description: "Data bus bit 4" },
-      { number: 24, name: "D5", signal: "D5", direction: "BI", description: "Data bus bit 5" },
-      { number: 25, name: "D6", signal: "D6", direction: "BI", description: "Data bus bit 6" },
-      { number: 26, name: "D7", signal: "D7", direction: "BI", description: "Data bus bit 7" },
-      { number: 27, name: "/CS", signal: "/CS", direction: "IN", description: "Chip select (active low)" },
-      { number: 28, name: "/RES", signal: "/RESET", direction: "IN", description: "Reset (active low)" },
-      { number: 29, name: "R/W", signal: "R/W", direction: "IN", description: "Read/Write select" },
-      { number: 30, name: "PHI2", signal: "PHI2", direction: "IN", description: "Clock input" },
-      { number: 31, name: "/IRQ", signal: "/IRQ", direction: "OUT", description: "Interrupt request (active low)" },
-      { number: 32, name: "RS0", signal: "RS0", direction: "IN", description: "Register select 0" },
-      { number: 33, name: "RS1", signal: "RS1", direction: "IN", description: "Register select 1" },
-      { number: 34, name: "RS2", signal: "RS2", direction: "IN", description: "Register select 2" },
-      { number: 35, name: "RS3", signal: "RS3", direction: "IN", description: "Register select 3" },
-      { number: 36, name: "CNT", signal: "CNT", direction: "BI", description: "Counter I/O" },
-      { number: 37, name: "SP", signal: "SP", direction: "BI", description: "Serial port" },
-      { number: 38, name: "TOD", signal: "TOD", direction: "IN", description: "Time-of-day clock" },
-      { number: 39, name: "/FLAG", signal: "/FLAG", direction: "IN", description: "Flag input (active low)" },
-      { number: 40, name: "PC", signal: "PC", direction: "OUT", description: "Peripheral control" },
-      { number: 41, name: "A1", signal: "A1", direction: "IN", description: "Address bit 1" },
-      { number: 42, name: "A0", signal: "A0", direction: "IN", description: "Address bit 0" },
-      { number: 43, name: "VSS", signal: "GND", direction: "GND", description: "Ground" },
-      { number: 44, name: "VCC", signal: "VCC", direction: "PWR", description: "+5V power supply" },
-    ];
-  }
-
-  // Lisa / Alice PLCC84 pins (generic AGA chip)
-  if (chipId === "lisa" || chipId === "alice" || chipId.startsWith("alice") || chipId.startsWith("lisa")) {
-    return generatePLCC84Pins();
-  }
-
-  // Paula PLCC52
-  if (chipId.startsWith("paula")) {
-    return generatePaulaPins();
-  }
-
-  // CPU PLCC68
-  if (chipId.startsWith("cpu")) {
-    return generateCPUPins();
-  }
-
-  // Gayle PLCC84
-  if (chipId.startsWith("gayle") || chipId.startsWith("agnus") || chipId.startsWith("budgie") || chipId.startsWith("ramsey") || chipId.startsWith("buster") || chipId.startsWith("akiko") || chipId.startsWith("dmac") || chipId.startsWith("fat") || chipId.startsWith("super")) {
-    return generatePLCC84Pins();
-  }
-
-  // Denise PLCC48
-  if (chipId.startsWith("denise")) {
-    return generatePLCC48Pins();
-  }
-
-  return generatePLCC44Pins();
+  const profile = CHIP_PINOUT_PROFILES[chipId];
+  if (!profile) return [];
+  if (profile === "mc68000_dip64") return generateMC68000Pins();
+  return generatePins(PINOUT_PROFILES[profile]);
 }
 
-function generatePLCC84Pins(): PinData[] {
-  const pinNames = [
-    "VCC","GND","A0","A1","A2","A3","A4","A5","A6","A7",
-    "A8","A9","A10","A11","A12","A13","A14","A15","A16","A17",
-    "A18","A19","A20","D0","D1","D2","D3","D4","D5","D6",
-    "D7","D8","D9","D10","D11","D12","D13","D14","D15","D16",
-    "D17","D18","D19","D20","D21","D22","D23","D24","D25","D26",
-    "D27","D28","D29","D30","D31","/RAS0","/RAS1","/CAS0","/CAS1",
-    "/WE","CCKQ","CCK","C3","C1","/OVR","XCLK","XCLKEN",
-    "/RESET","/INT2","/INT3","/INT6","DMAL","DKRD","DKWD","DKWE",
-    "/DKBR","RXD","TXD","/RTS","/CTS","VCC","GND","NC",
-  ];
-  const dirs: Array<"IN" | "OUT" | "BI" | "PWR" | "GND"> = ["PWR","GND","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","OUT","OUT","OUT","OUT","OUT","IN","IN","IN","IN","OUT","IN","IN","IN","OUT","OUT","OUT","OUT","OUT","OUT","OUT","OUT","OUT","IN","OUT","BI","BI","BI","BI","PWR","GND","BI"];
-  return Array.from({ length: 84 }, (_, i) => ({
-    number: i + 1,
-    name: pinNames[i] || `P${i + 1}`,
-    signal: pinNames[i] || `SIG${i + 1}`,
-    direction: dirs[i] || "BI",
-    description: getPinDescription(pinNames[i] || `P${i+1}`),
+function generatePins(pinNames: readonly string[]): PinData[] {
+  return pinNames.map((name, index) => ({
+    number: index + 1,
+    name,
+    signal: name,
+    direction: getPinDirection(name),
+    description: getPinDescription(name),
   }));
 }
 
-function generatePLCC44Pins(): PinData[] {
-  return Array.from({ length: 44 }, (_, i) => ({
-    number: i + 1,
-    name: `P${i + 1}`,
-    signal: `SIG${i + 1}`,
-    direction: "BI" as const,
-    description: `Pin ${i + 1}`,
-  }));
-}
-
-function generatePLCC48Pins(): PinData[] {
-  const pinNames = [
-    "VCC","GND","A0","A1","A2","A3","A4","A5","A6","A7","A8","A9",
-    "A10","A11","A12","A13","A14","A15","A16","A17","A18","A19","A20","A21",
-    "D0","D1","D2","D3","D4","D5","D6","D7","D8","D9","D10","D11",
-    "D12","D13","D14","D15","/RAS","/CAS","/WE","VCC","GND","XCLK","CCKQ","CCK",
-  ];
-  const dirs: Array<"IN"|"OUT"|"BI"|"PWR"|"GND"> = ["PWR","GND","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","OUT","OUT","OUT","PWR","GND","IN","IN","IN"];
-  return Array.from({ length: 48 }, (_, i) => ({
-    number: i + 1,
-    name: pinNames[i] || `P${i + 1}`,
-    signal: pinNames[i] || `SIG${i + 1}`,
-    direction: dirs[i] || "BI",
-    description: getPinDescription(pinNames[i] || `P${i+1}`),
-  }));
-}
-
-function generatePaulaPins(): PinData[] {
-  const pinNames = [
-    "VCC","GND","D0","D1","D2","D3","D4","D5","D6","D7",
-    "A0","A1","A2","A3","A4","A5","A6","A7","A8","A9",
-    "A10","A11","/RW","C1","C3","CCK","CCKQ","/OVR",
-    "/INT2","/INT3","/INT6","/IPL0","/IPL1","/IPL2",
-    "/RES","RXD","TXD","/RTS","/CTS","ACH0","ACH1",
-    "ACH2","ACH3","DMAL","/DKBR","DKRD","DKWD","DKWE",
-    "XCLK","XCLKEN","VCC","GND",
-  ];
-  const dirs: Array<"IN"|"OUT"|"BI"|"PWR"|"GND"> = ["PWR","GND","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","BI","IN","IN","IN","IN","IN","OUT","OUT","OUT","OUT","OUT","OUT","OUT","IN","IN","OUT","OUT","IN","OUT","OUT","OUT","OUT","OUT","OUT","IN","OUT","OUT","IN","IN","PWR","GND"];
-  return Array.from({ length: 52 }, (_, i) => ({
-    number: i + 1,
-    name: pinNames[i] || `P${i + 1}`,
-    signal: pinNames[i] || `SIG${i + 1}`,
-    direction: dirs[i] || "BI",
-    description: getPinDescription(pinNames[i] || `P${i+1}`),
-  }));
-}
-
-function generateCPUPins(): PinData[] {
-  const pinNames = [
-    "D0","D1","D2","D3","D4","D5","D6","D7","D8","D9","D10","D11","D12","D13","D14","D15","D16","D17","D18","D19","D20","D21","D22","D23","D24","D25","D26","D27","D28","D29","D30","D31",
-    "A0","A1","A2","A3","A4","A5","A6","A7","A8","A9","A10","A11","A12","A13","A14","A15","A16","A17","A18","A19","A20","A21","A22","A23","A24","A25","A26","A27","A28","A29","A30","A31",
-    "/AS","/DS","/DTACK","R/W","/RESET","/HALT","VCC","GND",
-  ];
-  return Array.from({ length: 68 }, (_, i) => ({
-    number: i + 1,
-    name: pinNames[i] || `P${i + 1}`,
-    signal: pinNames[i] || `SIG${i + 1}`,
-    direction: (["VCC"].includes(pinNames[i]) ? "PWR" : pinNames[i] === "GND" ? "GND" : "BI") as "IN"|"OUT"|"BI"|"PWR"|"GND",
-    description: getPinDescription(pinNames[i] || `P${i+1}`),
-  }));
+function getPinDirection(name: string): PinData["direction"] {
+  if (/^(GND|VSS)/.test(name)) return "GND";
+  if (/^(VCC|VDD|VBB)/.test(name)) return "PWR";
+  if (name.startsWith("NC")) return "NC";
+  return "UNKNOWN";
 }
 
 function getPinDescription(name: string): string {
@@ -359,5 +335,35 @@ function getPinDescription(name: string): string {
     "CNT": "Counter clock/input",
     "NC": "No connect",
   };
-  return map[name] || `${name} signal pin`;
+  if (map[name]) return map[name];
+  if (name.startsWith("NC")) return "No connect";
+  if (/^(D|DB|RD|DRD)\d+$/.test(name)) return `${name} data bus signal`;
+  if (/^(A|MA|DRA|RGA)\d+$/.test(name)) return `${name} address bus signal`;
+  return `${name} signal pin`;
+}
+
+function generateMC68000Pins(): PinData[] {
+  const pinNames = PINOUT_PROFILES.mc68000_dip64;
+
+  const inputPins = new Set([
+    "/DTACK", "/BGACK", "/BR", "CLK", "/VPA", "/BERR",
+    "/IPL2", "/IPL1", "/IPL0",
+  ]);
+  const bidirectionalPins = new Set(["/HALT", "/RESET"]);
+
+  return pinNames.map((name, index) => {
+    let direction: PinData["direction"] = "OUT";
+    if (name === "VCC") direction = "PWR";
+    else if (name === "GND") direction = "GND";
+    else if (name.startsWith("D") || bidirectionalPins.has(name)) direction = "BI";
+    else if (inputPins.has(name)) direction = "IN";
+
+    return {
+      number: index + 1,
+      name,
+      signal: name,
+      direction,
+      description: getPinDescription(name),
+    };
+  });
 }

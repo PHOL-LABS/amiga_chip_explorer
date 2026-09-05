@@ -22,6 +22,8 @@ function getPinColor(dir: PinData["direction"], isSelected: boolean, isHovered: 
     case "IN":  return { fill: "#0d1a0d", stroke: "#1a3a1a", text: "#7ECF7E" };
     case "OUT": return { fill: "#1a1200", stroke: "#3a2a00", text: "#E8A000" };
     case "BI":  return { fill: "#0d1520", stroke: "#1a3040", text: "#60a5fa" };
+    case "NC": return { fill: "#111", stroke: "#262626", text: "#555" };
+    case "UNKNOWN": return { fill: "#141414", stroke: "#333", text: "#888" };
     default:    return { fill: "#141414", stroke: "#2a2a2a", text: "#888" };
   }
 }

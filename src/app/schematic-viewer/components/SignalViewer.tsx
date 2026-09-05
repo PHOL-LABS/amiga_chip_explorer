@@ -132,6 +132,8 @@ export default function SignalViewer({ pin, chipName, partNumber, onClose }: Sig
     IN: "#7ECF7E",
     OUT: "#E8A000",
     BI: "#60a5fa",
+    NC: "#555",
+    UNKNOWN: "#888",
   };
   const dirColor = dirColors[pin.direction] || "#888";
 
@@ -141,6 +143,8 @@ export default function SignalViewer({ pin, chipName, partNumber, onClose }: Sig
     IN: "INPUT",
     OUT: "OUTPUT",
     BI: "BIDIRECTIONAL",
+    NC: "NO CONNECT",
+    UNKNOWN: "UNSPECIFIED",
   };
 
   return (

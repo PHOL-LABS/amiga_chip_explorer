@@ -29,6 +29,8 @@ export default function ChipLibraryClient() {
     if (pkg.startsWith("PLCC44")) return "#E8A000";
     if (pkg.startsWith("PLCC52")) return "#FF6B35";
     if (pkg.startsWith("PLCC68")) return "#a78bfa";
+    if (pkg.startsWith("PQFP") || pkg.startsWith("QFP")) return "#f472b6";
+    if (pkg.startsWith("PGA")) return "#c084fc";
     if (pkg.startsWith("DIP")) return "#60a5fa";
     return "#9ca3af";
   };
@@ -174,7 +176,7 @@ export default function ChipLibraryClient() {
           {/* Package legend */}
           <div className="flex items-center gap-4 mb-6 flex-wrap">
             <span className="font-mono text-[10px]" style={{ color: "#444" }}>PACKAGES:</span>
-            {["PLCC84", "PLCC68", "PLCC52", "PLCC44", "DIP"].map((pkg) => (
+            {["PLCC84", "PLCC68", "PLCC52", "PLCC44", "QFP/PQFP", "PGA", "DIP"].map((pkg) => (
               <div key={pkg} className="flex items-center gap-1.5">
                 <span
                   className="w-2 h-2 rounded-sm"

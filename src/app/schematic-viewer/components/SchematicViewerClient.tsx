@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Icon from "@/components/ui/AppIcon";
-import { AMIGA_MODELS, ChipInfo, PinData, getPinsForChip } from "@/app/chip-library/components/AmigaData";
+import { AMIGA_MODELS, ChipInfo, PinData, getPinsForChip, hasVerifiedPinout } from "@/app/chip-library/components/AmigaData";
 import ICPackageSVG from "./ICPackageSVG";
 import SignalViewer from "./SignalViewer";
 
@@ -31,13 +31,10 @@ export default function SchematicViewerClient() {
   const [selectedPin, setSelectedPin] = useState<PinData | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [viewerOpen, setViewerOpen] = useState(false);
-  const [pins, setPins] = useState<PinData[]>([]);
-
-  useEffect(() => {
-    if (selectedChip) {
-      setPins(getPinsForChip(selectedChip.id));
-    }
-  }, [selectedChip]);
+  const pins = useMemo(
+    () => selectedChip ? getPinsForChip(selectedChip.id) : [],
+    [selectedChip]
+  );
 
   useEffect(() => {
     const model = AMIGA_MODELS.find((m) => m.id === modelId);
@@ -90,6 +87,8 @@ export default function SchematicViewerClient() {
     if (pkg.startsWith("PLCC44")) return "#E8A000";
     if (pkg.startsWith("PLCC52")) return "#FF6B35";
     if (pkg.startsWith("PLCC68")) return "#a78bfa";
+    if (pkg.startsWith("PQFP") || pkg.startsWith("QFP")) return "#f472b6";
+    if (pkg.startsWith("PGA")) return "#c084fc";
     if (pkg.startsWith("DIP")) return "#60a5fa";
     return "#666";
   };
@@ -268,6 +267,8 @@ export default function SchematicViewerClient() {
               { label: "BI", color: "#60a5fa" },
               { label: "PWR", color: "#ff6b6b" },
               { label: "GND", color: "#6b9bff" },
+              { label: "SIG", color: "#888" },
+              { label: "NC", color: "#555" },
             ].map((item) => (
               <div key={item.label} className="flex items-center gap-1">
                 <span className="w-2 h-2 rounded-sm" style={{ background: item.color }} />
@@ -311,8 +312,18 @@ export default function SchematicViewerClient() {
             </div>
           )}
 
-          {/* Instruction overlay when no pin selected */}
-          {!selectedPin && (
+          {/* Pinout availability / instruction overlay */}
+          {selectedChip && !hasVerifiedPinout(selectedChip.id) ? (
+            <div
+              className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded flex items-center gap-2"
+              style={{ background: "rgba(26,18,0,0.95)", border: "1px solid #E8A00040" }}
+            >
+              <Icon name="ExclamationTriangleIcon" size={14} style={{ color: "#E8A000" }} />
+              <span className="font-mono text-[11px]" style={{ color: "#b27b00" }}>
+                Package verified; package-specific pin table is not yet available
+              </span>
+            </div>
+          ) : !selectedPin && (
             <div
               className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded flex items-center gap-2"
               style={{ background: "rgba(8,8,8,0.9)", border: "1px solid #1e1e1e" }}
@@ -332,10 +343,12 @@ export default function SchematicViewerClient() {
         >
           <span
             className="w-1.5 h-1.5 rounded-full animate-status-pulse"
-            style={{ background: "#7ECF7E" }}
+            style={{ background: selectedChip && hasVerifiedPinout(selectedChip.id) ? "#7ECF7E" : "#E8A000" }}
           />
           <span className="font-mono text-[10px]" style={{ color: "#333" }}>
-            {pins.length} pins loaded
+            {selectedChip && hasVerifiedPinout(selectedChip.id)
+              ? `${pins.length} verified pins loaded`
+              : "Pinout pending verification"}
           </span>
           {selectedPin && (
             <>
