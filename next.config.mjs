@@ -2,6 +2,15 @@ import { imageHosts } from './image-hosts.config.js';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
+
+  productionBrowserSourceMaps: true,
+
+  images: {
+    unoptimized: true,
+    remotePatterns: imageHosts,
+  },
   productionBrowserSourceMaps: true,
   distDir: process.env.DIST_DIR || '.next',  typescript: {
     ignoreBuildErrors: true,
